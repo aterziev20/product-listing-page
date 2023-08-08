@@ -1,0 +1,136 @@
+/* styles/ProductItem.css */
+
+.product-item {
+  margin: 0 2% 7% 2%;
+  width: 250px;
+  display: inline-block;
+  vertical-align: top;
+}
+
+.product-image {
+  width: 250px;
+  height: 250px;
+}
+
+.product-item h3 {
+  margin: 10px 0;
+  font-size: 1.2rem;
+}
+
+.product-item p {
+  font-size: 0.9rem;
+  margin-bottom: 10px;
+}
+
+.price-container {
+  margin-bottom: 10px;
+}
+
+.price {
+  font-size: 1.1rem;
+}
+
+.discounted-price {
+  font-size: 1.1rem;
+  color: #111111; /* Discounted price color */
+  margin-right: 3%;
+}
+
+.original-price {
+  text-decoration: line-through;
+  margin-right: 5px;
+  color: #7b7b7b;
+}
+
+.stars-outer {
+  display: inline-block;
+  position: relative;
+  cursor: pointer;
+  font-size: 1.2rem;
+}
+
+.stars-outer::before {
+  content: "\2605 \2605 \2605 \2605 \2605";
+}
+
+.stars-inner {
+  position: absolute;
+  top: 0;
+  left: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  width: 0;
+}
+
+.stars-inner::before {
+  content: "\2605 \2605 \2605 \2605 \2605";
+  color: #f8ce0b;
+}
+
+.rating-popup {
+  position: absolute;
+  left: 50%; /* Center horizontally */
+  transform: translateX(-50%);
+  background-color: #111111; /* Popup background color */
+  color: #fff;
+  padding: 5px 5px;
+  font-size: 0.8rem;
+  border-radius: 5px;
+  width: 100%;
+}
+
+.add-to-cart-button {
+  background-color: #111111; /* Button color */
+  color: #ffffff;
+  border: none;
+  padding: 8px 10px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  margin-left: 24%;
+  border-radius: 20px;
+  transition: all 0.2s ease-in-out;
+}
+
+.add-to-cart-button:hover {
+  transform: scale(1.1);
+}
+
+.image-container {
+  position: relative;
+  display: flex;
+  border: 2px solid transparent;
+  border-radius: 2%;
+  padding: 1%;
+  margin-top: 2%;
+  transition: all 0.2s ease-in-out;
+  filter: brightness(75%);
+}
+
+.add-to-favourite-button {
+  display: none;
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  font-size: 2rem;
+  z-index: 1;
+  color: black;
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+  padding-top: 4px;
+  transition: all 0.2s ease-in-out;
+}
+
+.image-container:hover .add-to-favourite-button {
+  display: block;
+}
+
+.image-container:hover .add-to-favourite-button:hover {
+  transform: scale(1.1);
+}
+
+@media only screen and (max-width: 632px) {
+  .add-to-favourite-button {
+    display: block;
+  }
+}

@@ -1,0 +1,44 @@
+.category-menu {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1% 0%;
+  gap: 5%;
+}
+
+.category-item {
+  text-decoration: none;
+  color: #111111;
+  font-size: 1.1rem;
+}
+
+.mobile-category-menu {
+  display: none;
+}
+
+.mobile-category-item {
+  display: flex;
+  justify-content: space-around;
+  text-decoration: none;
+  font-size: 1rem;
+  margin-left: 20%;
+  color: #111111;
+  max-width: 200px;
+  align-items: center;
+}
+
+.chevron-mobile-cat {
+  flex: 2;
+  justify-content: flex-end;
+  text-align: right;
+}
+
+@media only screen and (max-width: 632px) {
+  .category-menu {
+    display: none;
+  }
+  .mobile-category-menu {
+    display: flex;
+    flex-direction: column;
+  }
+}

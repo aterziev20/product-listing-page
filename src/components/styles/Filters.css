@@ -1,0 +1,292 @@
+.product-filtering {
+  align-items: center;
+  justify-content: center;
+  z-index: 10;
+  width: 200px;
+}
+
+.dropdown {
+  border-bottom: 1px solid #111111;
+}
+
+.dropdown-toggle {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  font-size: 1.1rem;
+  justify-content: space-between;
+  width: 220px;
+}
+
+.chevron-icon {
+  position: relative;
+  display: inline-block;
+  height: 0.8rem;
+  width: 0.8rem;
+  transition: transform 0.3s ease;
+  margin-right: 5%;
+}
+
+.rotate180 {
+  transform: translateY(50%) scaleY(-1);
+}
+
+/* Price Filters */
+
+.prices-container {
+  margin: 0 0 12% 0;
+}
+
+.prices {
+  display: block;
+  position: relative;
+  padding-left: 35px;
+  cursor: pointer;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  font-size: 1.1rem;
+}
+
+/* CUSTOM CHECKBOX */
+.prices input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  height: 0;
+  width: 0;
+}
+
+.checkmark {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 20px;
+  width: 20px;
+  background-color: transparent;
+  border-radius: 20%;
+  border: 2px solid #eeeeee;
+}
+
+/* On mouse-over, add a grey background color */
+.prices:hover {
+  color: #7b7b7b;
+}
+
+/* When the checkbox is checked, add a blue background */
+.prices input:checked ~ .checkmark {
+  background-color: #111111;
+}
+
+/* Create the checkmark/indicator (hidden when not checked) */
+.checkmark:after {
+  content: "";
+  position: absolute;
+  display: none;
+}
+
+/* Show the checkmark when checked */
+.prices input:checked ~ .checkmark:after {
+  display: block;
+}
+
+/* Style the checkmark/indicator */
+.prices .checkmark:after {
+  left: 7px;
+  top: 3px;
+  width: 5px;
+  height: 10px;
+  border: solid white;
+  border-width: 0 2px 2px 0;
+  -webkit-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  transform: rotate(45deg);
+}
+
+/* Color Filters */
+
+/* Example CSS for color options grid */
+.color-options-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.color-option {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 70px;
+}
+/* text */
+.color {
+  margin-top: 3%;
+  font-size: 0.8rem;
+  font-weight: 100;
+}
+
+.color-circle {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.color-circle:active {
+  transform: scale(0.9);
+}
+
+/* CHECK MARKS */
+
+.white-checkmark {
+  color: #f8f8f8;
+  font-size: 1rem;
+  width: 5px;
+  height: 10px;
+  border: solid white;
+  border-width: 0 2px 2px 0;
+  -webkit-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  transform: rotate(45deg);
+}
+
+.black-checkmark {
+  color: #353535;
+  font-size: 1rem;
+  width: 5px;
+  height: 10px;
+  border: solid #353535;
+  border-width: 0 2px 2px 0;
+  -webkit-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  transform: rotate(45deg);
+}
+
+/* CIRCLE COLORS */
+
+.black {
+  background-color: #000000;
+}
+
+.blue {
+  background-color: #1790c8;
+}
+
+.brown {
+  background-color: #825d41;
+}
+
+.green {
+  background-color: #7bba3c;
+}
+
+.gray {
+  background-color: #808080;
+}
+
+.multi-color {
+  background: linear-gradient(45deg, orange 0%, lightblue 50%, purple 100%);
+}
+
+.orange {
+  background-color: #f36b26;
+}
+
+.pink {
+  background-color: #f0728f;
+}
+
+.purple {
+  background-color: #8d429f;
+}
+
+.red {
+  background-color: #e7352b;
+}
+
+.white {
+  background-color: #ffffff;
+  border: 2px solid #f0f0f0;
+}
+
+.yellow {
+  background-color: #fed533;
+}
+
+@media only screen and (max-width: 632px) {
+  .product-filtering {
+    z-index: 0;
+    width: 550px;
+  }
+  .dropdown-toggle {
+    font-size: 0.7rem;
+  }
+
+  .prices {
+    font-size: 0.8rem;
+  }
+  .chevron-icon {
+    margin-right: 5%;
+  }
+  .color-options-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    width: 220px;
+  }
+
+  .color-option {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 50px;
+  }
+  /* text */
+  .color {
+    margin-top: 3%;
+    font-size: 0.7rem;
+    font-weight: 100;
+    white-space: nowrap;
+  }
+
+  .color-circle {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+  }
+  .white-checkmark {
+    width: 4px;
+    height: 8px;
+  }
+
+  .black-checkmark {
+    width: 4px;
+    height: 8px;
+  }
+  .checkmark {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 18px;
+    width: 18px;
+    background-color: transparent;
+    border-radius: 20%;
+    border: 2px solid #eeeeee;
+  }
+  
+  .prices .checkmark:after {
+    left: 7px;
+    top: 3px;
+    width: 4px;
+    height: 8px;
+
+  }
+}
