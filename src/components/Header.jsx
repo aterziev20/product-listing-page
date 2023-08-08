@@ -131,7 +131,7 @@ const Header = ({ categories, currentCategory, onCategoryChange }) => {
             <div className="dropdowns">
               <button className="mobile-link" onClick={toggleFeaturedDropdown}>
                 <span>New & Featured</span>
-                <span className="chevron-mobile el-1">
+                <span className="chevron-mobile">
                   <IoChevronForwardOutline />
                 </span>
               </button>
@@ -147,7 +147,7 @@ const Header = ({ categories, currentCategory, onCategoryChange }) => {
               )}
               <button className="mobile-link" onClick={toggleSaleDropdown}>
                 <span>Sale</span>
-                <span className="chevron-mobile el-2">
+                <span className="chevron-mobile">
                   <IoChevronForwardOutline />
                 </span>
               </button>
