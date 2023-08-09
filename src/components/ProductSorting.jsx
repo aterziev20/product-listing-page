@@ -12,7 +12,7 @@ const ProductSorting = ({ sortOption, handleSortChange }) => {
 
   const handleOptionSelect = (option) => {
     setIsOpen(false);
-    handleSortChange(option); // Just send the option, not the entire event object
+    handleSortChange(option); 
   };
 
   const getSortLabel = () => {

@@ -15,17 +15,14 @@ import "./styles/MobileHeader.css";
 
 const Header = ({ categories, currentCategory, onCategoryChange }) => {
   const handleSearchClick = () => {
-    // Implement the search icon click functionality here
     console.log("Search icon clicked!");
   };
 
   const handleWishlistClick = () => {
-    // Implement the wishlist icon click functionality here
     console.log("Wishlist icon clicked!");
   };
 
   const handleCartClick = () => {
-    // Implement the cart icon click functionality here
     console.log("Cart icon clicked!");
   };
 
