@@ -12,14 +12,14 @@ const CategoriesMenu = ({ categories, currentCategory, onCategoryChange }) => {
 
     // If the clicked category is the same as the current category, reset the category filter
     if (isCurrentCategoryPage) {
-      onCategoryChange(null); // Deselect the category
+      onCategoryChange(null); 
 
       // Redirect to appropriate base URL
       const redirectTo = isSalesPage ? "/sale" : "/home";
       window.location.href = redirectTo;
       return;
     }
-    onCategoryChange(category); // Select the clicked category
+    onCategoryChange(category); 
   };
 
   let basePath = "";
@@ -57,9 +57,9 @@ export const handleSectionClick = (
 
   // If the clicked category is the same as the current category, reset the category filter
   if (isCurrentCategoryPage) {
-    onCategoryChange(null); // Deselect the category
+    onCategoryChange(null);
     return;
   }
 
-  onCategoryChange(category); // Select the clicked category
+  onCategoryChange(category);
 };
