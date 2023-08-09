@@ -1,8 +1,10 @@
 .footer {
+  position: relative;
   background-color: #111111;
   padding: 20px;
   color: #ffffff;
   margin-top: 10%;
+  z-index: 1000;
 }
 
 .footer-container {
