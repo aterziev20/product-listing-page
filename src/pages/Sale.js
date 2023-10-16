@@ -1,9 +1,13 @@
-import React from 'react'
+import React from "react";
+
+import SalesList from "../components/SalesList";
 
 function Sale() {
   return (
-    <div>Sale</div>
-  )
+    <div>
+      <SalesList />
+    </div>
+  );
 }
 
-export default Sale
+export default Sale;
