@@ -1,11 +1,11 @@
 import React from "react";
 
-import VideoPlayer from "../components/VideoPlayer";
+import LandingSection from "../components/LandingSection";
 
 function Home() {
   return (
     <div>
-      <VideoPlayer />
+      <LandingSection />
     </div>
   );
 }

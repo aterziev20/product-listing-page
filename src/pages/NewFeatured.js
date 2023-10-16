@@ -1,9 +1,13 @@
-import React from 'react'
+import React from "react";
+
+import ProductList from "../components/ProductList";
 
 function NewFeatured() {
   return (
-    <div>NewFeatured</div>
-  )
+    <div>
+      <ProductList />
+    </div>
+  );
 }
 
-export default NewFeatured
+export default NewFeatured;

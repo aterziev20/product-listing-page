@@ -34,16 +34,20 @@ function NavBar() {
 
   return (
     <div>
-      <div className="acc-link-container">
-        <Link to="/help" className="acc-link">
-          Help
-        </Link>
-        <Link to="/men" className="acc-link">
-          Join us
-        </Link>
-        <Link to="/men" className="acc-link">
-          Sign in
-        </Link>
+      <div className="acc-link-wrapper">
+        <div className="acc-link-container">
+          <Link to={`/${`Help`.toLowerCase()}`} className="acc-link">
+            Help
+          </Link>
+          <div className="acc-line"></div>
+          <Link to={`/${`JoinUs`.toLowerCase()}`} className="acc-link">
+            Join Us
+          </Link>
+          <div className="acc-line"></div>
+          <Link to={`/${`SignIn`.toLowerCase()}`} className="acc-link">
+            Sign In
+          </Link>
+        </div>
       </div>
       <nav className={navClassName}>
         <div className="nav-wrapper">
@@ -54,19 +58,19 @@ function NavBar() {
               </Link>
             </div>
             <div className="nav-link-container">
-              <Link to="/NewFeatured" className="nav-link">
+              <Link to={`/shop/${`NewFeatured`.toLowerCase()}`} className="nav-link">
                 New & Featured
               </Link>
-              <Link to="/men" className="nav-link">
+              <Link to={`/shop/${`Men`.toLowerCase()}`}className="nav-link">
                 Men
               </Link>
-              <Link to="/women" className="nav-link">
+              <Link to={`/shop/${`Women`.toLowerCase()}`} className="nav-link">
                 Women
               </Link>
-              <Link to="/kids" className="nav-link">
+              <Link to={`/shop/${`Kids`.toLowerCase()}`} className="nav-link">
                 Kids
               </Link>
-              <Link to="/sale" className="nav-link">
+              <Link to={`/shop/${`Sale`.toLowerCase()}`} className="nav-link">
                 Sale
               </Link>
             </div>
@@ -77,16 +81,19 @@ function NavBar() {
                   <IoSearchOutline />
                 </button>
               </div>
-              <Link to="/Favourites" className="nav-icon fav">
+              <Link to={`/${`Favourites`.toLowerCase()}`} className="nav-icon">
                 <IoHeartOutline />
               </Link>
-              <Link to="/Cart" className="nav-icon">
+              <Link to={`/${`Cart`.toLowerCase()}`} className="nav-icon">
                 <IoBagOutline />
               </Link>
             </div>
           </div>
         </div>
       </nav>
+      <div className="promo-container">
+        <h3 className="promo">Free Delivery & Returns</h3>
+      </div>
     </div>
   );
 }

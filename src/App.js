@@ -27,13 +27,13 @@ const App = () => {
           <Header />
           <Routes>
             <Route path="/" element={<Home />} />
-            <Route path="/NewFeatured" element={<NewFeatured />} />
-            <Route path="/Men" element={<Men />} />
-            <Route path="/Women" element={<Women />} />
-            <Route path="/Kids" element={<Kids />} />
-            <Route path="/Sale" element={<Sale />} />
-            <Route path="/Favourites" element={<Favourites />} />
-            <Route path="/Cart" element={<Cart />} />
+            <Route path={`/shop/${`NewFeatured`.toLowerCase()}`} element={<NewFeatured />} />
+            <Route path={`/shop/${`Men`.toLowerCase()}`} element={<Men />} />
+            <Route path={`/shop/${`Women`.toLowerCase()}`} element={<Women />} />
+            <Route path={`/shop/${`Kids`.toLowerCase()}`} element={<Kids />} />
+            <Route path={`/shop/${`Sale`.toLowerCase()}`} element={<Sale />} />
+            <Route path={`/${`Favourites`.toLowerCase()}`} element={<Favourites />} />
+            <Route path={`/${`Cart`.toLowerCase()}`} element={<Cart />} />
           </Routes>
           <Footer />
         </div>
