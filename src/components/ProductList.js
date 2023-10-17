@@ -7,11 +7,6 @@ import LoadMore from "./LoadMore";
 import "./styles/ProductList.css";
 
 const ProductList = ({ category }) => {
-  const categoryDescriptions = {
-    sportswear: `Elevate your game and style with our cutting-edge men's <i>SPORTSWEAR</i>, where performance meets fashion.`,
-    shoes: `Step into victory with our high-performance men's sports <i>SHOES</i>, engineered for your ultimate triumph.`,
-    accessories: `Unleash your potential with our dynamic men's sports <i>ACCESSORIES</i>, the perfect companions for every athletic journey.`,
-  };
 
   const productsPerPage = 15;
   const allProducts = productsData;
@@ -124,15 +119,6 @@ const ProductList = ({ category }) => {
             />
           </div>
         </div>
-      </div>
-      <div className="category-description">
-        <h2
-          dangerouslySetInnerHTML={{
-            __html: category
-              ? categoryDescriptions[category.toLowerCase()]
-              : "",
-          }}
-        ></h2>
       </div>
       <div className="fixed-sort">
         <div className="sorting">

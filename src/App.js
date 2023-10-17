@@ -7,6 +7,7 @@ import Men from "./pages/Men";
 import Women from "./pages/Women";
 import Kids from "./pages/Kids";
 import Sale from "./pages/Sale";
+import Football from "./pages/Football";
 
 import Favourites from "./pages/Favourites";
 import Cart from "./pages/Cart";
@@ -27,12 +28,25 @@ const App = () => {
           <Header />
           <Routes>
             <Route path="/" element={<Home />} />
-            <Route path={`/shop/${`NewFeatured`.toLowerCase()}`} element={<NewFeatured />} />
+            <Route
+              path={`/shop/${`NewFeatured`.toLowerCase()}`}
+              element={<NewFeatured />}
+            />
             <Route path={`/shop/${`Men`.toLowerCase()}`} element={<Men />} />
-            <Route path={`/shop/${`Women`.toLowerCase()}`} element={<Women />} />
+            <Route
+              path={`/shop/${`Women`.toLowerCase()}`}
+              element={<Women />}
+            />
             <Route path={`/shop/${`Kids`.toLowerCase()}`} element={<Kids />} />
             <Route path={`/shop/${`Sale`.toLowerCase()}`} element={<Sale />} />
-            <Route path={`/${`Favourites`.toLowerCase()}`} element={<Favourites />} />
+            <Route
+              path={`/shop/${`Football`.toLowerCase()}`}
+              element={<Football />}
+            />
+            <Route
+              path={`/${`Favourites`.toLowerCase()}`}
+              element={<Favourites />}
+            />
             <Route path={`/${`Cart`.toLowerCase()}`} element={<Cart />} />
           </Routes>
           <Footer />

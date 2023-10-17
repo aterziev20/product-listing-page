@@ -2,7 +2,7 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { IoSearchOutline, IoHeartOutline, IoBagOutline } from "react-icons/io5";
-import { ReactComponent as Logo } from "../assets/icons/logo.svg";
+import { ReactComponent as Logo } from "../assets/icons/logo-black.svg";
 import "./styles/NavBar.css";
 
 function NavBar() {
@@ -34,21 +34,6 @@ function NavBar() {
 
   return (
     <div>
-      <div className="acc-link-wrapper">
-        <div className="acc-link-container">
-          <Link to={`/${`Help`.toLowerCase()}`} className="acc-link">
-            Help
-          </Link>
-          <div className="acc-line"></div>
-          <Link to={`/${`JoinUs`.toLowerCase()}`} className="acc-link">
-            Join Us
-          </Link>
-          <div className="acc-line"></div>
-          <Link to={`/${`SignIn`.toLowerCase()}`} className="acc-link">
-            Sign In
-          </Link>
-        </div>
-      </div>
       <nav className={navClassName}>
         <div className="nav-wrapper">
           <div className="nav-container">
@@ -58,10 +43,13 @@ function NavBar() {
               </Link>
             </div>
             <div className="nav-link-container">
-              <Link to={`/shop/${`NewFeatured`.toLowerCase()}`} className="nav-link">
+              <Link
+                to={`/shop/${`NewFeatured`.toLowerCase()}`}
+                className="nav-link"
+              >
                 New & Featured
               </Link>
-              <Link to={`/shop/${`Men`.toLowerCase()}`}className="nav-link">
+              <Link to={`/shop/${`Men`.toLowerCase()}`} className="nav-link">
                 Men
               </Link>
               <Link to={`/shop/${`Women`.toLowerCase()}`} className="nav-link">
@@ -91,9 +79,6 @@ function NavBar() {
           </div>
         </div>
       </nav>
-      <div className="promo-container">
-        <h3 className="promo">Free Delivery & Returns</h3>
-      </div>
     </div>
   );
 }
