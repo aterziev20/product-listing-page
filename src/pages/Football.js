@@ -1,8 +1,11 @@
 import React from 'react'
 
+import ProductList from "../components/ProductList";
+
+
 function Football() {
   return (
-    <div>Football</div>
+    <div><ProductList/></div>
   )
 }
 

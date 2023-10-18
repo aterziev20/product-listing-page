@@ -1,8 +1,11 @@
 import React from 'react'
 
+import WorkInProgress from "../components/WorkInProgress";
+
+
 function Kids() {
   return (
-    <div>Kids</div>
+    <div><WorkInProgress /></div>
   )
 }
 

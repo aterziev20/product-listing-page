@@ -8,17 +8,14 @@ function AccountNav() {
     <div>
       <div className="acc-link-wrapper">
         <div className="acc-link-container">
-          <Link to={`/${`Help`.toLowerCase()}`} className="acc-link">
-            Help
-          </Link>
+          {/* to={`/${`Help`.toLowerCase()}`} */}
+          <Link className="acc-link">Help</Link>
           <div className="acc-line"></div>
-          <Link to={`/${`JoinUs`.toLowerCase()}`} className="acc-link">
-            Join Us
-          </Link>
+          {/* to={`/${`JoinUs`.toLowerCase()}`} */}
+          <Link className="acc-link">Join Us</Link>
           <div className="acc-line"></div>
-          <Link to={`/${`SignIn`.toLowerCase()}`} className="acc-link">
-            Sign In
-          </Link>
+          {/* to={`/${`SignIn`.toLowerCase()}`} */}
+          <Link className="acc-link">Sign In</Link>
         </div>
       </div>
     </div>

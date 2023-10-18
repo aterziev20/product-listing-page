@@ -2,7 +2,7 @@ import React from "react";
 
 import WorkInProgress from "../components/WorkInProgress";
 
-function Women() {
+function Basketball() {
   return (
     <div>
       <WorkInProgress />
@@ -10,4 +10,4 @@ function Women() {
   );
 }
 
-export default Women;
+export default Basketball;

@@ -8,6 +8,9 @@ import Women from "./pages/Women";
 import Kids from "./pages/Kids";
 import Sale from "./pages/Sale";
 import Football from "./pages/Football";
+import Basketball from "./pages/Basketball";
+import Tennis from "./pages/Tennis";
+import Running from "./pages/Running";
 
 import Favourites from "./pages/Favourites";
 import Cart from "./pages/Cart";
@@ -40,14 +43,26 @@ const App = () => {
             <Route path={`/shop/${`Kids`.toLowerCase()}`} element={<Kids />} />
             <Route path={`/shop/${`Sale`.toLowerCase()}`} element={<Sale />} />
             <Route
-              path={`/shop/${`Football`.toLowerCase()}`}
-              element={<Football />}
-            />
-            <Route
               path={`/${`Favourites`.toLowerCase()}`}
               element={<Favourites />}
             />
             <Route path={`/${`Cart`.toLowerCase()}`} element={<Cart />} />
+            <Route
+              path={`/shop/${`Football`.toLowerCase()}`}
+              element={<Football />}
+            />
+            <Route
+              path={`/shop/${`Basketball`.toLowerCase()}`}
+              element={<Basketball />}
+            />
+            <Route
+              path={`/shop/${`Tennis`.toLowerCase()}`}
+              element={<Tennis />}
+            />
+            <Route
+              path={`/shop/${`Running`.toLowerCase()}`}
+              element={<Running />}
+            />
           </Routes>
           <Footer />
         </div>

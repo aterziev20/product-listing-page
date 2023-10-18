@@ -1,9 +1,13 @@
-import React from 'react'
+import React from "react";
+
+import WorkInProgress from "../components/WorkInProgress";
 
 function Favourites() {
   return (
-    <div>Favourites</div>
-  )
+    <div>
+      <WorkInProgress />
+    </div>
+  );
 }
 
-export default Favourites
+export default Favourites;
