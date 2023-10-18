@@ -45,6 +45,18 @@
   color: #eeeeee;
 }
 
+.upc {
+  text-transform: uppercase;
+}
+
+.lwc {
+  text-transform: none;
+}
+
+.cap {
+  text-transform: capitalize;
+}
+
 .footer-info {
   display: flex;
   flex-direction: column;

@@ -1,0 +1,120 @@
+.title-container {
+  width: 100%;
+  align-items: center;
+  text-align: center;
+  margin: 4% 0 0 0;
+}
+
+.title-small {
+  font-weight: 500;
+  font-size: 18px;
+  margin: 0;
+}
+
+.title-big {
+  text-transform: uppercase;
+  font-size: 80px;
+  line-height: 80px;
+  margin: 0;
+}
+
+.title-button-container {
+  margin-top: 50px;
+}
+
+.title-button {
+  font-weight: 500;
+  color: var(--primary-color);
+  border-radius: 25px;
+  background-color: var(--secondary-color);
+  padding: 8px 24px 10px 24px;
+  text-decoration: none;
+  transition: background-color 0.2s ease-in-out;
+}
+
+.title-button:hover {
+  background-color: var(--hover-color);
+}
+
+.video-player {
+  width: 100%;
+  margin-top: 50px;
+}
+
+.football-container {
+  margin-top: 0.5%;
+}
+
+.football-image {
+  width: 290px;
+  height: 290px;
+}
+
+.section-titles {
+  margin-left: 5%;
+  font-weight: 600;
+  font-size: 30px;
+}
+
+.sport-container {
+  margin: 5% 0;
+}
+
+.sport-link {
+  text-decoration: none;
+}
+
+.sport-image {
+  width: 375px;
+  height: 375px;
+  -webkit-filter: grayscale(100%); /* Safari 6.0 - 9.0 */
+  filter: grayscale(100%);
+  text-decoration: none;
+}
+
+.sport-heading {
+  position: absolute;
+  box-shadow: 0px 9px 16px 4px rgba(0, 0, 0, 0.2),
+    0px 4px 4px 2px rgba(0, 0, 0, 0.2);
+  font-weight: 400;
+  margin: 0;
+  top: 5%;
+  right: 10%;
+  z-index: 1;
+  font-size: 18px;
+  color: var(--accent-color);
+  border-radius: 25px;
+  padding: 5px 10px;
+  background-color: var(--primary-color);
+}
+
+.popular-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  margin-left: 5%;
+}
+
+.popular-item {
+  width: calc(33.33% - 10px);
+  margin-bottom: 5%;
+  font-size: 28px;
+  font-weight: 800;
+}
+
+.popular-item p {
+  color: var(--secondary-color);
+  border-bottom: 1px solid var(--secondary-color);
+  width: 80%;
+  padding-bottom: 3%;
+  transition: all 0.2s ease-in-out;
+
+}
+
+.popular-item p:hover {
+  border-bottom: 8px solid var(--secondary-color);
+}
+
+.popular-item > * {
+  text-decoration: none;
+}

@@ -1,0 +1,130 @@
+/* NavBar.css */
+.not-fixed {
+  position: relative;
+  width: 100%;
+  transition: transform 0.3s ease-in-out;
+  background-color: var(--primary-color);
+}
+
+.fixed {
+  position: fixed;
+  z-index: 10;
+  top: 0;
+  width: 100%;
+  transition: transform 0.3s ease-in-out;
+  background-color: var(--primary-color);
+}
+
+.visible {
+  transform: translateY(0%);
+}
+
+.hidden {
+  transform: translateY(-120%);
+}
+
+.nav-wrapper {
+  padding: 0px 0px 1px 0;
+  background-color: var(--primary-color);
+}
+
+.nav-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo {
+  width: 100px;
+  height: 50px;
+  fill: var(--secondary-color);
+  transition: fill 0.2s ease-in-out;
+  margin-left: 25%;
+}
+
+.logo:hover {
+  fill: var(--hover-color);
+}
+
+.nav-link-container {
+  margin-left: 13%;
+  display: flex;
+}
+
+.nav-link {
+  font-weight: 600;
+  text-decoration: none;
+  color: var(--secondary-color);
+  border-bottom: 2px solid transparent;
+  padding: 20px 15px;
+  transition: border-bottom 0.2s ease-in-out;
+}
+
+.nav-link:hover {
+  border-bottom: 2px solid var(--secondary-color);
+}
+
+.nav-icon-container {
+  display: flex;
+  gap: 10px;
+  margin-right: 2%;
+  padding: 6px 0 0 0;
+}
+
+.search-input {
+  position: relative;
+  width: 200px;
+  padding-right: 10%;
+  margin-right: 5%;
+}
+
+.search-input input {
+  background-color: var(--third-color);
+  border: 1px transparent;
+  border-radius: 20px;
+  font-size: 1rem;
+  padding: 10px 0 8px 40px;
+  margin: 0% 0 0 0;
+  width: 100%;
+  border: none;
+  outline: none;
+  transition: background 0.2s ease-in-out;
+}
+
+.search-input input:hover {
+  background: var(--icon-hover-color);
+}
+
+.search-icon {
+  position: absolute;
+  top: 45%;
+  left: 0px;
+  transform: translateY(-50%);
+  border: none;
+  background-color: transparent;
+  font-size: 1.5rem;
+  border-radius: 50%;
+  padding: 6px 7px 1px 7px;
+}
+
+.search-icon:hover {
+  background-color: var(--icon-hover-color);
+  padding: 6px 7px 1px 7px;
+}
+
+.nav-icon {
+  font-size: 1.5rem;
+  background: none;
+  cursor: pointer;
+  color: var(--secondary-color);
+  border-radius: 50%;
+  padding: 5px 7px 1px 7px;
+  margin-bottom: 2px;
+  transition: background-color 0.2s ease-in-out;
+
+}
+
+.nav-icon:hover {
+  background-color: var(--icon-hover-color);
+  padding: 5px 7px 1px 7px;
+}
