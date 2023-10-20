@@ -7,6 +7,14 @@ import "./styles/NavBar.css";
 
 import productsData from "../data/productsData";
 
+// Redux
+import { useDispatch, useSelector } from "react-redux";
+import {
+  setSearchTerm,
+  setSearchResults,
+  selectSearchTerm,
+} from "../redux/search/searchSlice";
+
 function NavBar() {
   const [prevScrollPos, setPrevScrollPos] = useState(window.scrollY);
   const [visible, setVisible] = useState(true);
@@ -35,8 +43,8 @@ function NavBar() {
   const navClassName = `nav-wrapper ${visibilityClass} ${fixedClass}`;
 
   // Search
-
-  const [searchTerm, setSearchTerm] = useState("");
+  const dispatch = useDispatch();
+  const searchTerm = useSelector(selectSearchTerm);
   const navigate = useNavigate();
 
   const handleSearch = () => {
@@ -66,21 +74,17 @@ function NavBar() {
         value.toLowerCase().startsWith(searchTerm.toLowerCase())
       );
 
-      if (matchingValues.length > 0) {
-        // URL-encode values and redirect to a page displaying all matching values
-        const encodedValues = matchingValues.map(encodeURIComponent).join(",");
-        const path = `/shop/search-results?values=${encodedValues}&search=${encodeURIComponent(
-          searchTerm
-        )}`;
-        navigate(path);
-      } else {
-        // Handle the case when no matching value is found
-        // You might want to display an error message or handle it based on your requirements
-        console.log("No matching value found for:", searchTerm);
-      }
+      // Dispatch actions to update Redux state
+      dispatch(setSearchResults(matchingValues));
+
+      // Redirect to a page displaying all matching values
+      const encodedValues = matchingValues.map(encodeURIComponent).join(",");
+      const path = `/shop/search-results?values=${encodedValues}&search=${encodeURIComponent(
+        searchTerm
+      )}`;
+      navigate(path);
     } else {
       // Handle the case when the search term is empty
-      // You might want to display a message or handle it based on your requirements
       console.log("Search term is empty");
     }
   };
@@ -127,7 +131,7 @@ function NavBar() {
                   type="text"
                   placeholder="Search..."
                   value={searchTerm}
-                  onChange={(e) => setSearchTerm(e.target.value)}
+                  onChange={(e) => dispatch(setSearchTerm(e.target.value))}
                   onKeyDown={handleEnter}
                 />
                 <button

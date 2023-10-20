@@ -21,7 +21,7 @@ import Header from "./components/Header";
 import Footer from "./components/Footer";
 import "./styles.css";
 
-//redux
+// Redux
 import { Provider } from "react-redux";
 import store from "./redux/store";
 

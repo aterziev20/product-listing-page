@@ -1,7 +1,10 @@
-import { legacy_createStore as createStore, applyMiddleware } from "redux";
-import thunk from 'redux-thunk';
-import rootReducer from "./rootReducer";
+import { configureStore } from "@reduxjs/toolkit";
+import searchReducer from "./search/searchSlice";
 
-const store = createStore(rootReducer, applyMiddleware(thunk));
+const store = configureStore({
+  reducer: {
+    search: searchReducer,
+  },
+});
 
 export default store;
