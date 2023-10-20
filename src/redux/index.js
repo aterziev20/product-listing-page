@@ -1,1 +1,1 @@
-export { SET_NAVBAR_VISIBILITY } from "./nav/navActions";
+export { setSearchQuery } from "./search/searchActions";

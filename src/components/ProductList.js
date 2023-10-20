@@ -1,147 +1,45 @@
-import React, { useState, useEffect } from "react";
+// ProductList.js
+import React, { useEffect, useState } from "react";
+import { useLocation } from "react-router-dom";
 import productsData from "../data/productsData";
-import ProductItem from "./ProductItem";
-import Filters from "./Filters";
-import ProductSorting from "./ProductSorting";
-import LoadMore from "./LoadMore";
-import "./styles/ProductList.css";
 
-const ProductList = ({ category }) => {
+const ProductList = () => {
+  const location = useLocation();
+  const searchParams = new URLSearchParams(location.search);
+  const values = searchParams.get("values").split(",");
+  const searchTerm = searchParams.get("search");
 
-  const productsPerPage = 15;
-  const allProducts = productsData;
-  const categoryProducts = category
-    ? allProducts.filter((product) => product.category === category)
-    : allProducts;
-
-  const totalProducts = categoryProducts.length;
-  const [visibleProductsCount, setVisibleProductsCount] =
-    useState(productsPerPage);
-  const [visibleProducts, setVisibleProducts] = useState(
-    categoryProducts.slice(0, productsPerPage)
-  );
-  const [sortOption, setSortOption] = useState("default");
-  const [filteredProducts, setFilteredProducts] = useState(categoryProducts);
-
-  const applySorting = (products) => {
-    let sortedProducts = [...products];
-
-    switch (sortOption) {
-      case "az":
-        sortedProducts.sort((a, b) => a.title.localeCompare(b.title));
-        break;
-      case "za":
-        sortedProducts.sort((a, b) => b.title.localeCompare(a.title));
-        break;
-      case "priceAsc":
-        sortedProducts.sort(
-          (a, b) =>
-            (a.discountedPrice !== undefined ? a.discountedPrice : a.price) -
-            (b.discountedPrice !== undefined ? b.discountedPrice : b.price)
-        );
-        break;
-      case "priceDesc":
-        sortedProducts.sort(
-          (a, b) =>
-            (b.discountedPrice !== undefined ? b.discountedPrice : b.price) -
-            (a.discountedPrice !== undefined ? a.discountedPrice : a.price)
-        );
-        break;
-      default:
-        break;
-    }
-
-    return sortedProducts;
-  };
+  const [products, setProducts] = useState([]);
 
   useEffect(() => {
-    const updateVisibleProducts = (newCategory) => {
-      const newCategoryProducts = newCategory
-        ? allProducts.filter((product) => product.category === newCategory)
-        : allProducts;
-
-      const newVisibleProductsCount = Math.min(
-        productsPerPage,
-        newCategoryProducts.length
-      );
-
-      setVisibleProductsCount(newVisibleProductsCount);
-      setFilteredProducts(newCategoryProducts);
-
-      const sortedProducts = applySorting(newCategoryProducts);
-      setVisibleProducts(sortedProducts.slice(0, newVisibleProductsCount));
-    };
-    updateVisibleProducts(category);
-  }, [category, allProducts, productsPerPage]);
-
-  useEffect(() => {
-    const sortedProducts = applySorting(filteredProducts);
-    setVisibleProducts(sortedProducts.slice(0, visibleProductsCount));
-  }, [sortOption, filteredProducts, visibleProductsCount]);
-
-  const handleFilterChange = (filteredProducts) => {
-    setFilteredProducts(filteredProducts);
-    const sortedProducts = applySorting(filteredProducts);
-    setVisibleProducts(sortedProducts.slice(0, visibleProductsCount));
-  };
-
-  const handleSortChange = (selectedOption) => {
-    setSortOption(selectedOption);
-    const sortedProducts = applySorting(filteredProducts);
-    setVisibleProducts(sortedProducts.slice(0, visibleProductsCount));
-  };
-
-  const handleLoadMore = () => {
-    const nextVisibleProductsCount = Math.min(
-      visibleProductsCount + productsPerPage,
-      totalProducts
+    // Filter products based on colors, descriptions, groups, and sports
+    const filteredProducts = productsData.filter((product) =>
+      values.some(
+        (value) =>
+          product.category.toLowerCase() === value.toLowerCase() ||
+          product.color.toLowerCase() === value.toLowerCase() ||
+          product.description.toLowerCase() === value.toLowerCase() ||
+          product.group.toLowerCase() === value.toLowerCase() ||
+          product.sport.toLowerCase() === value.toLowerCase()
+      )
     );
-    setVisibleProductsCount(nextVisibleProductsCount);
-    const sortedProducts = applySorting(filteredProducts);
-    setVisibleProducts(sortedProducts.slice(0, nextVisibleProductsCount));
-  };
+
+    setProducts(filteredProducts);
+  }, [values]);
 
   return (
-    <div className="product-list">
-      <div className="fixed-container">
-        <div className="counter-filter">
-          {category ? <h2>{category}</h2> : <h2>New & Featured</h2>}
-          <div className="product-counter">
-            {`Showing ${Math.min(
-              filteredProducts.length,
-              visibleProductsCount
-            )} out of ${totalProducts} items`}
-          </div>
-          <div className="filter">
-            <Filters
-              products={categoryProducts}
-              onFilterChange={handleFilterChange}
-            />
-          </div>
-        </div>
-      </div>
-      <div className="fixed-sort">
-        <div className="sorting">
-          <ProductSorting
-            sortOption={sortOption}
-            handleSortChange={handleSortChange}
-          />
-        </div>
-      </div>
-      <div className="product-list-container">
-        {visibleProducts.map((product) => (
-          <ProductItem key={product.id} product={product} />
+    <div>
+      <h2>Search results for values: {searchTerm}</h2>
+      <ul>
+        {products.map((product) => (
+          <li key={product.id}>
+            <p>{product.title}</p>
+            <p>{product.description}</p>
+            <p>Price: ${product.price}</p>
+            {/* Add more product details as needed */}
+          </li>
         ))}
-      </div>
-      <div className="load-more">
-        {filteredProducts.length > visibleProductsCount && (
-          <LoadMore
-            visibleProductsCount={visibleProductsCount}
-            totalProducts={totalProducts}
-            handleLoadMore={handleLoadMore}
-          />
-        )}
-      </div>
+      </ul>
     </div>
   );
 };

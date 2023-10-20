@@ -1,9 +1,11 @@
 // NavBar.js
 import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { IoSearchOutline, IoHeartOutline, IoBagOutline } from "react-icons/io5";
 import { ReactComponent as Logo } from "../assets/icons/logo-black.svg";
 import "./styles/NavBar.css";
+
+import productsData from "../data/productsData";
 
 function NavBar() {
   const [prevScrollPos, setPrevScrollPos] = useState(window.scrollY);
@@ -31,6 +33,63 @@ function NavBar() {
 
   // Combined classname
   const navClassName = `nav-wrapper ${visibilityClass} ${fixedClass}`;
+
+  // Search
+
+  const [searchTerm, setSearchTerm] = useState("");
+  const navigate = useNavigate();
+
+  const handleSearch = () => {
+    if (searchTerm.trim() !== "") {
+      // Extract unique values for color, description, group, and sport from productsData
+      const category = [
+        ...new Set(productsData.map((product) => product.category)),
+      ];
+      const colors = [...new Set(productsData.map((product) => product.color))];
+      const descriptions = [
+        ...new Set(productsData.map((product) => product.description)),
+      ];
+      const groups = [...new Set(productsData.map((product) => product.group))];
+      const sports = [...new Set(productsData.map((product) => product.sport))];
+
+      // Combine all unique values
+      const allValues = [
+        ...category,
+        ...colors,
+        ...descriptions,
+        ...groups,
+        ...sports,
+      ];
+
+      // Find values that start with the search term (case-insensitive)
+      const matchingValues = allValues.filter((value) =>
+        value.toLowerCase().startsWith(searchTerm.toLowerCase())
+      );
+
+      if (matchingValues.length > 0) {
+        // URL-encode values and redirect to a page displaying all matching values
+        const encodedValues = matchingValues.map(encodeURIComponent).join(",");
+        const path = `/shop/search-results?values=${encodedValues}&search=${encodeURIComponent(
+          searchTerm
+        )}`;
+        navigate(path);
+      } else {
+        // Handle the case when no matching value is found
+        // You might want to display an error message or handle it based on your requirements
+        console.log("No matching value found for:", searchTerm);
+      }
+    } else {
+      // Handle the case when the search term is empty
+      // You might want to display a message or handle it based on your requirements
+      console.log("Search term is empty");
+    }
+  };
+
+  const handleEnter = (e) => {
+    if (e.key === "Enter") {
+      handleSearch();
+    }
+  };
 
   return (
     <div>
@@ -64,8 +123,18 @@ function NavBar() {
             </div>
             <div className="nav-icon-container">
               <div className="search-input">
-                <input type="text" placeholder="Search" />
-                <button className="search-icon">
+                <input
+                  type="text"
+                  placeholder="Search..."
+                  value={searchTerm}
+                  onChange={(e) => setSearchTerm(e.target.value)}
+                  onKeyDown={handleEnter}
+                />
+                <button
+                  className="search-icon"
+                  onClick={handleSearch}
+                  disabled={!searchTerm.trim()}
+                >
                   <IoSearchOutline />
                 </button>
               </div>
