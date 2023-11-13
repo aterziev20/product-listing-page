@@ -1,3 +1,12 @@
+.search-results-container {
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+.search-results{
+  font-size: 1.5rem;
+}
+
 .product-list {
   display: grid;
   grid-template-columns: auto 1fr;

@@ -1,11 +1,11 @@
 import React from 'react'
 
-import WorkInProgress from "../components/WorkInProgress";
+import MenProducts from '../components/MenProducts';
 
 
 function Men() {
   return (
-    <div><WorkInProgress /></div>
+    <div><MenProducts /></div>
   )
 }
 

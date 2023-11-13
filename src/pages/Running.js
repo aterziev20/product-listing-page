@@ -1,11 +1,11 @@
 import React from "react";
 
-import WorkInProgress from "../components/WorkInProgress";
+import RunningProducts from "../components/RunningProducts";
 
 function Running() {
   return (
     <div>
-      <WorkInProgress />
+      <RunningProducts />
     </div>
   );
 }

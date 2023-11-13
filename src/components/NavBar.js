@@ -1,23 +1,22 @@
-// NavBar.js
 import React, { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { IoSearchOutline, IoHeartOutline, IoBagOutline } from "react-icons/io5";
 import { ReactComponent as Logo } from "../assets/icons/logo-black.svg";
 import "./styles/NavBar.css";
 
-import productsData from "../data/productsData";
-
 // Redux
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import {
   setSearchTerm,
   setSearchResults,
-  selectSearchTerm,
 } from "../redux/search/searchSlice";
+
+import productsData from "../data/productsData";
 
 function NavBar() {
   const [prevScrollPos, setPrevScrollPos] = useState(window.scrollY);
   const [visible, setVisible] = useState(true);
+  const [searchTermInput, setSearchTermInput] = useState("");
 
   useEffect(() => {
     const handleScroll = () => {
@@ -44,11 +43,10 @@ function NavBar() {
 
   // Search
   const dispatch = useDispatch();
-  const searchTerm = useSelector(selectSearchTerm);
   const navigate = useNavigate();
 
   const handleSearch = () => {
-    if (searchTerm.trim() !== "") {
+    if (searchTermInput.trim() !== "") {
       // Extract unique values for color, description, group, and sport from productsData
       const category = [
         ...new Set(productsData.map((product) => product.category)),
@@ -71,16 +69,18 @@ function NavBar() {
 
       // Find values that start with the search term (case-insensitive)
       const matchingValues = allValues.filter((value) =>
-        value.toLowerCase().startsWith(searchTerm.toLowerCase())
+        value.toLowerCase().startsWith(searchTermInput.toLowerCase())
       );
 
       // Dispatch actions to update Redux state
       dispatch(setSearchResults(matchingValues));
+      dispatch(setSearchTerm(searchTermInput));
 
+      
       // Redirect to a page displaying all matching values
       const encodedValues = matchingValues.map(encodeURIComponent).join(",");
       const path = `/shop/search-results?values=${encodedValues}&search=${encodeURIComponent(
-        searchTerm
+        searchTermInput
       )}`;
       navigate(path);
     } else {
@@ -130,14 +130,14 @@ function NavBar() {
                 <input
                   type="text"
                   placeholder="Search..."
-                  value={searchTerm}
-                  onChange={(e) => dispatch(setSearchTerm(e.target.value))}
+                  value={searchTermInput}
+                  onChange={(e) => setSearchTermInput(e.target.value)}
                   onKeyDown={handleEnter}
                 />
                 <button
                   className="search-icon"
                   onClick={handleSearch}
-                  disabled={!searchTerm.trim()}
+                  disabled={!searchTermInput.trim()}
                 >
                   <IoSearchOutline />
                 </button>

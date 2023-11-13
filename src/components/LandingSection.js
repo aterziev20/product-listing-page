@@ -98,7 +98,8 @@ function LandingSection() {
         <div className="popular-container">
           {popularItems.map((item, index) => (
             <div key={index} className="popular-item">
-              <Link to={`/shop/${item.title.toLowerCase()}`}>
+              {/*`/shop/${item.title.toLowerCase()}`*/}
+              <Link to="">
                 <p>{item.title}</p>
               </Link>
             </div>

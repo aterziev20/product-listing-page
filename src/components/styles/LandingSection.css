@@ -46,8 +46,8 @@
 }
 
 .football-image {
-  width: 290px;
-  height: 290px;
+  width: 100%;
+  height: 100%;
 }
 
 .section-titles {
@@ -65,8 +65,8 @@
 }
 
 .sport-image {
-  width: 375px;
-  height: 375px;
+  width: 100%;
+  height: 100%;
   -webkit-filter: grayscale(100%); /* Safari 6.0 - 9.0 */
   filter: grayscale(100%);
   text-decoration: none;

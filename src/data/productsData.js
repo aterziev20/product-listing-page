@@ -13,6 +13,7 @@ const productsData = [
     rating: 4,
     color: "Red",
     sport: "football",
+    condition: "new",
   },
   {
     id: 2,
@@ -25,6 +26,7 @@ const productsData = [
     rating: 4.1,
     color: "Green",
     sport: "basketball",
+    condition: "featured",
   },
   {
     id: 3,
@@ -50,6 +52,7 @@ const productsData = [
     rating: 4.3,
     color: "Brown",
     sport: "running",
+    condition: "new",
   },
   {
     id: 5,
@@ -63,6 +66,7 @@ const productsData = [
     rating: 4.4,
     color: "Black",
     sport: "football",
+    condition: "featured",
   },
   {
     id: 6,
@@ -75,6 +79,7 @@ const productsData = [
     rating: 4.5,
     color: "White",
     sport: "basketball",
+    condition: "featured",
   },
   {
     id: 7,
@@ -113,6 +118,7 @@ const productsData = [
     rating: 4.8,
     color: "Orange",
     sport: "football",
+    condition: "new",
   },
   {
     id: 10,
@@ -150,6 +156,7 @@ const productsData = [
     rating: 4.7,
     color: "Brown",
     sport: "running",
+    condition: "featured",
   },
   {
     id: 13,
@@ -174,6 +181,7 @@ const productsData = [
     rating: 4.2,
     color: "Green",
     sport: "basketball",
+    condition: "new",
   },
   {
     id: 15,
@@ -199,6 +207,7 @@ const productsData = [
     rating: 4.8,
     color: "Multi-Color",
     sport: "running",
+    condition: "featured",
   },
   {
     id: 17,
@@ -236,6 +245,7 @@ const productsData = [
     rating: 4.1,
     color: "Purple",
     sport: "tennis",
+    condition: "new",
   },
   {
     id: 20,
@@ -273,6 +283,7 @@ const productsData = [
     rating: 4.6,
     color: "Green",
     sport: "basketball",
+    condition: "featured",
   },
   {
     id: 23,
@@ -285,6 +296,7 @@ const productsData = [
     rating: 4.8,
     color: "Gray",
     sport: "tennis",
+    condition: "featured",
   },
   {
     id: 24,
@@ -335,6 +347,7 @@ const productsData = [
     rating: 4.9,
     color: "Purple",
     sport: "tennis",
+    condition: "new",
   },
   {
     id: 28,
@@ -372,6 +385,7 @@ const productsData = [
     rating: 4.5,
     color: "Yellow",
     sport: "basketball",
+    condition: "featured",
   },
 
   {
@@ -385,6 +399,7 @@ const productsData = [
     rating: 4.5,
     color: "Black",
     sport: "tennis",
+    condition: "featured",
   },
   {
     id: 32,
@@ -423,6 +438,7 @@ const productsData = [
     rating: 4.8,
     color: "Red",
     sport: "basketball",
+    condition: "new",
   },
   {
     id: 35,
@@ -473,6 +489,8 @@ const productsData = [
     rating: 4.7,
     color: "Purple",
     sport: "basketball",
+
+    condition: "featured",
   },
   {
     id: 39,
@@ -509,6 +527,7 @@ const productsData = [
     rating: 4.6,
     color: "Black",
     sport: "football",
+    condition: "new",
   },
   {
     id: 42,
@@ -558,6 +577,7 @@ const productsData = [
     rating: 4.4,
     color: "Gray",
     sport: "football",
+    condition: "featured",
   },
   {
     id: 46,
@@ -570,6 +590,7 @@ const productsData = [
     rating: 4.7,
     color: "Multi-Color",
     sport: "basketball",
+    condition: "featured",
   },
   {
     id: 47,
@@ -619,6 +640,7 @@ const productsData = [
     rating: 4.3,
     color: "Red",
     sport: "basketball",
+    condition: "new",
   },
   {
     id: 51,
@@ -644,6 +666,7 @@ const productsData = [
     rating: 4.2,
     color: "White",
     sport: "running",
+    condition: "featured",
   },
   {
     id: 53,
@@ -656,6 +679,7 @@ const productsData = [
     rating: 4.7,
     color: "Blue",
     sport: "football",
+    condition: "new",
   },
   {
     id: 54,
@@ -680,6 +704,7 @@ const productsData = [
     rating: 4.3,
     color: "Gray",
     sport: "tennis",
+    condition: "new",
   },
   {
     id: 56,
@@ -692,6 +717,7 @@ const productsData = [
     rating: 4.9,
     color: "Green",
     sport: "running",
+    condition: "new",
   },
   {
     id: 57,
@@ -741,6 +767,7 @@ const productsData = [
     rating: 4.3,
     color: "Orange",
     sport: "running",
+    condition: "featured",
   },
   {
     id: 61,
@@ -753,6 +780,7 @@ const productsData = [
     rating: 4.2,
     color: "Black",
     sport: "football",
+    condition: "featured",
   },
   {
     id: 62,
@@ -789,6 +817,7 @@ const productsData = [
     rating: 4.7,
     color: "Green",
     sport: "running",
+    condition: "new",
   },
   {
     id: 65,
@@ -801,6 +830,7 @@ const productsData = [
     rating: 4.0,
     color: "Gray",
     sport: "football",
+    condition: "new",
   },
   {
     id: 66,
@@ -862,6 +892,7 @@ const productsData = [
     rating: 4.9,
     color: "Red",
     sport: "basketball",
+    condition: "featured",
   },
   {
     id: 71,
@@ -915,6 +946,7 @@ const productsData = [
     rating: 4.7,
     color: "Green",
     sport: "basketball",
+    condition: "new",
   },
   {
     id: 75,
@@ -928,6 +960,7 @@ const productsData = [
     rating: 4.0,
     color: "Gray",
     sport: "tennis",
+    condition: "new",
   },
   {
     id: 76,
@@ -952,6 +985,7 @@ const productsData = [
     rating: 4.3,
     color: "Orange",
     sport: "football",
+    condition: "featured",
   },
   {
     id: 78,
@@ -990,6 +1024,7 @@ const productsData = [
     rating: 4.9,
     color: "Red",
     sport: "running",
+    condition: "featured",
   },
   {
     id: 81,
@@ -1026,6 +1061,7 @@ const productsData = [
     rating: 4.1,
     color: "Blue",
     sport: "football",
+    condition: "featured",
   },
   {
     id: 84,
@@ -1038,6 +1074,7 @@ const productsData = [
     rating: 4.7,
     color: "Green",
     sport: "running",
+    condition: "new",
   },
   {
     id: 85,
@@ -1087,6 +1124,7 @@ const productsData = [
     rating: 4.6,
     color: "Pink",
     sport: "running",
+    condition: "new",
   },
   {
     id: 89,
@@ -1099,6 +1137,7 @@ const productsData = [
     rating: 4.4,
     color: "Purple",
     sport: "tennis",
+    condition: "featured",
   },
   {
     id: 90,
@@ -1111,6 +1150,7 @@ const productsData = [
     rating: 4.9,
     color: "Red",
     sport: "basketball",
+    condition: "new",
   },
 ];
 
