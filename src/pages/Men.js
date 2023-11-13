@@ -1,12 +1,15 @@
-import React from 'react'
+import React from "react";
 
-import MenProducts from '../components/MenProducts';
-
+import ScrollToTop from "../components/ScrollToTop";
+import MenProducts from "../components/MenProducts";
 
 function Men() {
   return (
-    <div><MenProducts /></div>
-  )
+    <div>
+      <ScrollToTop />
+      <MenProducts />
+    </div>
+  );
 }
 
-export default Men
+export default Men;

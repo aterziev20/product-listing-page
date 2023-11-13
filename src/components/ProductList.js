@@ -127,7 +127,7 @@ const ProductList = () => {
 
   return (
     <div className="product-list">
-      <div className="fixed-container">
+      <div className="fixed-container" id="top">
         <div className="counter-filter">
           <h2 className="search-results-container">
             Search results for <br />
