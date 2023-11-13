@@ -1,12 +1,18 @@
-import React from 'react';
+import React from "react";
+import "./styles/LoadMore.css";
 
 const LoadMore = ({ visibleProductsCount, totalProducts, handleLoadMore }) => {
+  const remainingProducts = totalProducts - visibleProductsCount;
+  const canLoadMore = remainingProducts > 0;
+
   return (
-    visibleProductsCount < totalProducts && (
-      <button className="load-more-btn" onClick={handleLoadMore}>
-        Load More
-      </button>
-    )
+    <div className="load-more-container">
+      {canLoadMore && (
+        <button className="load-more-btn" onClick={handleLoadMore}>
+          Load More
+        </button>
+      )}
+    </div>
   );
 };
 

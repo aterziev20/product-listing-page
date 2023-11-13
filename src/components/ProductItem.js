@@ -32,7 +32,6 @@ const ProductItem = ({ product }) => {
       setIsAddedToFavourite(true);
     }
   };
-  
 
   const handleAddToCart = () => {
     if (isAddedToCart) {
@@ -41,6 +40,10 @@ const ProductItem = ({ product }) => {
       setIsAddedToCart(true);
     }
   };
+
+  //Discount Percentage calculation
+  const discountValue = price - discountedPrice;
+  const discountPercentage = Math.round((discountValue / price) * 100);
 
   return (
     <div className="product-item">
@@ -55,14 +58,25 @@ const ProductItem = ({ product }) => {
       </div>
       <h3>{title}</h3>
       <p>{description}</p>
-      <div className="price-container">
+      <div className="price-wrapper">
         {discountedPrice ? (
-          <div className="price">
-            <span className="discounted-price">BGN {discountedPrice}</span>
-            <span className="original-price">BGN {price}</span>
+          <div className="price-container">
+            <div className="price">
+              <span className="discounted-price">BGN {discountedPrice}</span>
+              <span className="original-price">BGN {price}</span>
+            </div>
+            <div className="discount-percentage">
+              <span >
+                {discountPercentage}% off
+              </span>
+            </div>
           </div>
         ) : (
-          <div className="price">BGN {price}</div>
+          <div className="price-container">
+            <div className="price">
+              <span>BGN {price}</span>
+            </div>
+          </div>
         )}
       </div>
       <div
@@ -77,10 +91,7 @@ const ProductItem = ({ product }) => {
           </div>
         )}
       </div>
-      <button
-        className="add-to-cart-button"
-        onClick={handleAddToCart}
-      >
+      <button className="add-to-cart-button" onClick={handleAddToCart}>
         {isAddedToCart ? "Added to Cart" : "Add to Cart"}
       </button>
     </div>

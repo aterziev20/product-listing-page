@@ -1,27 +1,32 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect, useState } from "react";
+import { useLocation } from "react-router-dom";
 import productsData from "../data/productsData";
 import ProductItem from "./ProductItem";
+import Sorting from "./Sorting";
 import Filters from "./Filters";
-import ProductSorting from "./ProductSorting";
 import LoadMore from "./LoadMore";
 import "./styles/ProductList.css";
 
-const ProductList = ({ category }) => {
+// Redux
+import { useDispatch, useSelector } from "react-redux";
+import {
+  selectSearchTerm,
+  selectSearchResults,
+  setSearchResults,
+} from "../redux/search/searchSlice";
+import { selectFilters, setFilters } from "../redux/filters/filtersSlice";
 
-  const productsPerPage = 15;
-  const allProducts = productsData;
-  const categoryProducts = category
-    ? allProducts.filter((product) => product.category === category)
-    : allProducts;
+const ProductList = () => {
+  const location = useLocation();
+  const dispatch = useDispatch();
+  const searchTerm = useSelector(selectSearchTerm);
+  const searchResults = useSelector(selectSearchResults);
+  const filters = useSelector(selectFilters);
+  const [visibleProductsCount, setVisibleProductsCount] = useState(15);
+  const [visibleProducts, setVisibleProducts] = useState([]);
+  const [filteredProducts, setFilteredProducts] = useState([]);
 
-  const totalProducts = categoryProducts.length;
-  const [visibleProductsCount, setVisibleProductsCount] =
-    useState(productsPerPage);
-  const [visibleProducts, setVisibleProducts] = useState(
-    categoryProducts.slice(0, productsPerPage)
-  );
-  const [sortOption, setSortOption] = useState("default");
-  const [filteredProducts, setFilteredProducts] = useState(categoryProducts);
+  const sortOption = useSelector((state) => state.sorting.sortOption);
 
   const applySorting = (products) => {
     let sortedProducts = [...products];
@@ -55,46 +60,65 @@ const ProductList = ({ category }) => {
   };
 
   useEffect(() => {
-    const updateVisibleProducts = (newCategory) => {
-      const newCategoryProducts = newCategory
-        ? allProducts.filter((product) => product.category === newCategory)
-        : allProducts;
+    const searchParams = new URLSearchParams(location.search);
+    const values = searchParams.get("values")?.split(",");
 
-      const newVisibleProductsCount = Math.min(
-        productsPerPage,
-        newCategoryProducts.length
-      );
+    const filteredProducts = productsData.filter((product) =>
+      values.some(
+        (value) =>
+          product.category.toLowerCase() === value.toLowerCase() ||
+          product.color.toLowerCase() === value.toLowerCase() ||
+          product.description.toLowerCase() === value.toLowerCase() ||
+          product.group.toLowerCase() === value.toLowerCase() ||
+          product.sport.toLowerCase() === value.toLowerCase()
+      )
+    );
 
-      setVisibleProductsCount(newVisibleProductsCount);
-      setFilteredProducts(newCategoryProducts);
+    if (JSON.stringify(filteredProducts) !== JSON.stringify(searchResults)) {
+      dispatch(setSearchResults(filteredProducts));
+    }
 
-      const sortedProducts = applySorting(newCategoryProducts);
-      setVisibleProducts(sortedProducts.slice(0, newVisibleProductsCount));
-    };
-    updateVisibleProducts(category);
-  }, [category, allProducts, productsPerPage]);
-
-  useEffect(() => {
     const sortedProducts = applySorting(filteredProducts);
     setVisibleProducts(sortedProducts.slice(0, visibleProductsCount));
-  }, [sortOption, filteredProducts, visibleProductsCount]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [
+    dispatch,
+    location.search,
+    searchResults,
+    searchTerm,
+    visibleProductsCount,
+  ]);
 
-  const handleFilterChange = (filteredProducts) => {
-    setFilteredProducts(filteredProducts);
-    const sortedProducts = applySorting(filteredProducts);
+  const updateVisibleProducts = () => {
+    const sortedProducts = applySorting(searchResults);
     setVisibleProducts(sortedProducts.slice(0, visibleProductsCount));
   };
 
-  const handleSortChange = (selectedOption) => {
-    setSortOption(selectedOption);
+  useEffect(() => {
+    updateVisibleProducts();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [sortOption, searchResults, visibleProductsCount]);
+
+  const handleFilterChange = (filteredProducts) => {
+    setFilteredProducts(filteredProducts);
+    const newVisibleProductsCount = Math.min(15, filteredProducts.length);
+    setVisibleProductsCount(newVisibleProductsCount);
     const sortedProducts = applySorting(filteredProducts);
-    setVisibleProducts(sortedProducts.slice(0, visibleProductsCount));
+    setVisibleProducts(sortedProducts.slice(0, newVisibleProductsCount));
+
+    // Update filters in Redux
+    dispatch(
+      setFilters({
+        selectedPriceRanges: filters.selectedPriceRanges,
+        selectedColors: filters.selectedColors,
+      })
+    );
   };
 
   const handleLoadMore = () => {
     const nextVisibleProductsCount = Math.min(
-      visibleProductsCount + productsPerPage,
-      totalProducts
+      visibleProductsCount + 15,
+      filteredProducts.length
     );
     setVisibleProductsCount(nextVisibleProductsCount);
     const sortedProducts = applySorting(filteredProducts);
@@ -105,16 +129,17 @@ const ProductList = ({ category }) => {
     <div className="product-list">
       <div className="fixed-container">
         <div className="counter-filter">
-          {category ? <h2>{category}</h2> : <h2>New & Featured</h2>}
-          <div className="product-counter">
-            {`Showing ${Math.min(
-              filteredProducts.length,
-              visibleProductsCount
-            )} out of ${totalProducts} items`}
-          </div>
+          <h2 className="search-results-container">
+            Search results for <br />
+            <span className="search-results">
+              {searchTerm} (
+              {Math.min(searchResults.length, visibleProductsCount)} out of{" "}
+              {searchResults.length})
+            </span>
+          </h2>
           <div className="filter">
             <Filters
-              products={categoryProducts}
+              products={searchResults}
               onFilterChange={handleFilterChange}
             />
           </div>
@@ -122,25 +147,21 @@ const ProductList = ({ category }) => {
       </div>
       <div className="fixed-sort">
         <div className="sorting">
-          <ProductSorting
-            sortOption={sortOption}
-            handleSortChange={handleSortChange}
-          />
+          <Sorting />
         </div>
       </div>
+
       <div className="product-list-container">
         {visibleProducts.map((product) => (
           <ProductItem key={product.id} product={product} />
         ))}
       </div>
       <div className="load-more">
-        {filteredProducts.length > visibleProductsCount && (
-          <LoadMore
-            visibleProductsCount={visibleProductsCount}
-            totalProducts={totalProducts}
-            handleLoadMore={handleLoadMore}
-          />
-        )}
+        <LoadMore
+          visibleProductsCount={visibleProductsCount}
+          totalProducts={filteredProducts.length}
+          handleLoadMore={handleLoadMore}
+        />
       </div>
     </div>
   );

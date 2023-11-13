@@ -22,9 +22,15 @@
   margin-bottom: 10px;
 }
 
-.price-container {
+.price-wrapper {
   margin-bottom: 10px;
+  font-weight: 600;
 }
+
+.price-container {
+  height: 40px;
+}
+
 
 .price {
   font-size: 1.1rem;
@@ -40,6 +46,13 @@
   text-decoration: line-through;
   margin-right: 5px;
   color: #7b7b7b;
+}
+
+.discount-percentage{
+  color: #007d48;
+  font-size: 1.1rem;
+  margin-top: 2%;
+
 }
 
 .stars-outer {

@@ -1,12 +1,13 @@
-import React from 'react'
+import React from "react";
 
-import WorkInProgress from "../components/WorkInProgress";
-
+import KidsProducts from "../components/KidsProducts";
 
 function Kids() {
   return (
-    <div><WorkInProgress /></div>
-  )
+    <div>
+      <KidsProducts />
+    </div>
+  );
 }
 
-export default Kids
+export default Kids;

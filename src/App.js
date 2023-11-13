@@ -12,6 +12,8 @@ import Basketball from "./pages/Basketball";
 import Tennis from "./pages/Tennis";
 import Running from "./pages/Running";
 
+import ProductList from "./components/ProductList";
+
 import Favourites from "./pages/Favourites";
 import Cart from "./pages/Cart";
 
@@ -19,7 +21,7 @@ import Header from "./components/Header";
 import Footer from "./components/Footer";
 import "./styles.css";
 
-//redux
+// Redux
 import { Provider } from "react-redux";
 import store from "./redux/store";
 
@@ -63,6 +65,8 @@ const App = () => {
               path={`/shop/${`Running`.toLowerCase()}`}
               element={<Running />}
             />
+
+            <Route path="/shop/search-results" element={<ProductList />} />
           </Routes>
           <Footer />
         </div>

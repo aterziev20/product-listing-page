@@ -1,31 +1,30 @@
+// Filters.js
 import React, { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { FaChevronDown } from "react-icons/fa";
+import { setFilters, selectFilters } from "../redux/filters/filtersSlice";
 import "./styles/Filters.css";
 
 const Filters = ({ products, onFilterChange }) => {
-  const availableColors = [
-    ...new Set(products.map((product) => product.color)),
-  ];
-
-  const [selectedPriceRanges, setSelectedPriceRanges] = useState([]);
-  const [selectedColors, setSelectedColors] = useState([]);
+  const dispatch = useDispatch();
+  const filters = useSelector(selectFilters);
   const [isPriceDropdownOpen, setIsPriceDropdownOpen] = useState(false);
   const [isColorDropdownOpen, setIsColorDropdownOpen] = useState(false);
 
   const handlePriceChange = (priceRange) => {
-    const updatedRanges = selectedPriceRanges.includes(priceRange)
-      ? selectedPriceRanges.filter((range) => range !== priceRange)
-      : [...selectedPriceRanges, priceRange];
-    setSelectedPriceRanges(updatedRanges);
-    applyFilters(selectedColors, updatedRanges);
+    const updatedRanges = filters.selectedPriceRanges.includes(priceRange)
+      ? filters.selectedPriceRanges.filter((range) => range !== priceRange)
+      : [...filters.selectedPriceRanges, priceRange];
+
+    applyFilters(filters.selectedColors, updatedRanges);
   };
 
   const handleColorChange = (color) => {
-    const updatedColors = selectedColors.includes(color)
-      ? selectedColors.filter((col) => col !== color)
-      : [...selectedColors, color];
-    setSelectedColors(updatedColors);
-    applyFilters(updatedColors, selectedPriceRanges);
+    const updatedColors = filters.selectedColors.includes(color)
+      ? filters.selectedColors.filter((col) => col !== color)
+      : [...filters.selectedColors, color];
+
+    applyFilters(updatedColors, filters.selectedPriceRanges);
   };
 
   const applyFilters = (colors, priceRanges) => {
@@ -88,8 +87,16 @@ const Filters = ({ products, onFilterChange }) => {
         })
       );
     }
+
+    dispatch(
+      setFilters({ selectedPriceRanges: priceRanges, selectedColors: colors })
+    );
     onFilterChange(filteredProducts);
   };
+
+  const availableColors = [
+    ...new Set(products.map((product) => product.color)),
+  ];
 
   return (
     <div>
@@ -118,7 +125,9 @@ const Filters = ({ products, onFilterChange }) => {
                       <input
                         type="checkbox"
                         value="under99"
-                        checked={selectedPriceRanges.includes("under99")}
+                        checked={filters.selectedPriceRanges.includes(
+                          "under99"
+                        )}
                         onChange={() => handlePriceChange("under99")}
                       />
                       <span className="checkmark"></span>
@@ -129,7 +138,9 @@ const Filters = ({ products, onFilterChange }) => {
                       <input
                         type="checkbox"
                         value="99to199"
-                        checked={selectedPriceRanges.includes("99to199")}
+                        checked={filters.selectedPriceRanges.includes(
+                          "99to199"
+                        )}
                         onChange={() => handlePriceChange("99to199")}
                       />
                       <span className="checkmark"></span>
@@ -140,7 +151,9 @@ const Filters = ({ products, onFilterChange }) => {
                       <input
                         type="checkbox"
                         value="199to299"
-                        checked={selectedPriceRanges.includes("199to299")}
+                        checked={filters.selectedPriceRanges.includes(
+                          "199to299"
+                        )}
                         onChange={() => handlePriceChange("199to299")}
                       />
                       <span className="checkmark"></span>
@@ -151,7 +164,9 @@ const Filters = ({ products, onFilterChange }) => {
                       <input
                         type="checkbox"
                         value="over299"
-                        checked={selectedPriceRanges.includes("over299")}
+                        checked={filters.selectedPriceRanges.includes(
+                          "over299"
+                        )}
                         onChange={() => handlePriceChange("over299")}
                       />
                       <span className="checkmark"></span>
@@ -185,16 +200,20 @@ const Filters = ({ products, onFilterChange }) => {
                         <div
                           key={color}
                           className={`color-option ${
-                            selectedColors.includes(color) ? "selected" : ""
+                            filters.selectedColors.includes(color)
+                              ? "selected"
+                              : ""
                           }`}
                           onClick={() => handleColorChange(color)}
                         >
                           <div
                             className={`color-circle ${color.toLowerCase()} ${
-                              selectedColors.includes(color) ? "checked" : ""
+                              filters.selectedColors.includes(color)
+                                ? "checked"
+                                : ""
                             }`}
                           >
-                            {selectedColors.includes(color) && (
+                            {filters.selectedColors.includes(color) && (
                               <span
                                 className={`${
                                   color === "White"

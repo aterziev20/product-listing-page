@@ -1,0 +1,77 @@
+/* Add this CSS to your styles */
+.sorting {
+    position: relative;
+  }
+
+  .sortTitle {
+    font-weight: 600;
+  }
+
+  .sortLable {
+    font-weight: 600;
+    color: #707072;
+
+  }
+  
+  .dropdown {
+    cursor: pointer;
+    display: inline-block;
+  }
+  
+  .selected-option {
+    display: flex;
+    align-items: center;
+    padding: 5% 0;
+    min-width: 80px;
+  }
+  
+  .chevron-icon {
+    margin-left: 10px;
+  }
+  
+  .options {
+    list-style: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    padding: 0;
+    margin: 5px 0 0;
+    background-color: #fff;
+    border-radius: 20px;
+    border: 1px solid #7b7b7b;
+    z-index: 10;
+  }
+
+  
+  
+  .options li {
+    padding: 8px 12px;
+    cursor: pointer;
+  }
+  
+  .options li:hover {
+    color: #7b7b7b;
+  }
+  
+  @media only screen and (max-width: 632px) {
+    .dropdown {
+      position: relative;
+      z-index: 100;
+      background-color: white;
+    }
+  }
+  
+  @media only screen and (max-width: 450px) {
+    .dropdown {
+      max-width: 140px;
+    }
+    .selected-option {
+      font-size: 0.8rem;
+      width: 80px;
+    }
+    .options li {
+      font-size: 0.8rem;
+    }
+  }
+  
+  

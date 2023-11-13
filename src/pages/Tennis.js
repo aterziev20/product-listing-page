@@ -1,11 +1,11 @@
 import React from "react";
 
-import WorkInProgress from "../components/WorkInProgress";
+import TennisProducts from "../components/TennisProducts";
 
 function Tennis() {
   return (
     <div>
-      <WorkInProgress />
+      <TennisProducts />
     </div>
   );
 }

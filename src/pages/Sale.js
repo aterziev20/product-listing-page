@@ -1,11 +1,11 @@
 import React from "react";
 
-import SalesList from "../components/SalesList";
+import SalesProducts from "../components/SalesProducts";
 
 function Sale() {
   return (
     <div>
-      <SalesList />
+      <SalesProducts />
     </div>
   );
 }

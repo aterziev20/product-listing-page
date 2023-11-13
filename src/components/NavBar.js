@@ -1,13 +1,22 @@
-// NavBar.js
 import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { IoSearchOutline, IoHeartOutline, IoBagOutline } from "react-icons/io5";
 import { ReactComponent as Logo } from "../assets/icons/logo-black.svg";
 import "./styles/NavBar.css";
 
+// Redux
+import { useDispatch } from "react-redux";
+import {
+  setSearchTerm,
+  setSearchResults,
+} from "../redux/search/searchSlice";
+
+import productsData from "../data/productsData";
+
 function NavBar() {
   const [prevScrollPos, setPrevScrollPos] = useState(window.scrollY);
   const [visible, setVisible] = useState(true);
+  const [searchTermInput, setSearchTermInput] = useState("");
 
   useEffect(() => {
     const handleScroll = () => {
@@ -31,6 +40,60 @@ function NavBar() {
 
   // Combined classname
   const navClassName = `nav-wrapper ${visibilityClass} ${fixedClass}`;
+
+  // Search
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+
+  const handleSearch = () => {
+    if (searchTermInput.trim() !== "") {
+      // Extract unique values for color, description, group, and sport from productsData
+      const category = [
+        ...new Set(productsData.map((product) => product.category)),
+      ];
+      const colors = [...new Set(productsData.map((product) => product.color))];
+      const descriptions = [
+        ...new Set(productsData.map((product) => product.description)),
+      ];
+      const groups = [...new Set(productsData.map((product) => product.group))];
+      const sports = [...new Set(productsData.map((product) => product.sport))];
+
+      // Combine all unique values
+      const allValues = [
+        ...category,
+        ...colors,
+        ...descriptions,
+        ...groups,
+        ...sports,
+      ];
+
+      // Find values that start with the search term (case-insensitive)
+      const matchingValues = allValues.filter((value) =>
+        value.toLowerCase().startsWith(searchTermInput.toLowerCase())
+      );
+
+      // Dispatch actions to update Redux state
+      dispatch(setSearchResults(matchingValues));
+      dispatch(setSearchTerm(searchTermInput));
+
+      
+      // Redirect to a page displaying all matching values
+      const encodedValues = matchingValues.map(encodeURIComponent).join(",");
+      const path = `/shop/search-results?values=${encodedValues}&search=${encodeURIComponent(
+        searchTermInput
+      )}`;
+      navigate(path);
+    } else {
+      // Handle the case when the search term is empty
+      console.log("Search term is empty");
+    }
+  };
+
+  const handleEnter = (e) => {
+    if (e.key === "Enter") {
+      handleSearch();
+    }
+  };
 
   return (
     <div>
@@ -64,8 +127,18 @@ function NavBar() {
             </div>
             <div className="nav-icon-container">
               <div className="search-input">
-                <input type="text" placeholder="Search" />
-                <button className="search-icon">
+                <input
+                  type="text"
+                  placeholder="Search..."
+                  value={searchTermInput}
+                  onChange={(e) => setSearchTermInput(e.target.value)}
+                  onKeyDown={handleEnter}
+                />
+                <button
+                  className="search-icon"
+                  onClick={handleSearch}
+                  disabled={!searchTermInput.trim()}
+                >
                   <IoSearchOutline />
                 </button>
               </div>

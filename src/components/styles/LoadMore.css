@@ -1,0 +1,29 @@
+
+.load-more-btn {
+    background-color: transparent; /* Button color */
+    color: #111111;
+    border: 2px solid #111111;
+    font-size: 1.3rem;
+    padding: 12px 15px;
+    cursor: pointer;
+    border-radius: 25px;
+    transition: all 0.2s ease-in-out;
+  }
+  
+  .load-more-btn:hover {
+    transform: scale(1.1);
+  }
+  
+  @media only screen and (max-width: 632px) {
+    .load-more-btn {
+      background-color: transparent; /* Button color */
+      color: #111111;
+      border: 2px solid #111111;
+      font-size: 1rem;
+      padding: 9px 12px;
+      cursor: pointer;
+      border-radius: 25px;
+    }
+  
+  }
+  

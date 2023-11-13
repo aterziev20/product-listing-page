@@ -1,12 +1,13 @@
-import React from 'react'
+import React from "react";
 
-import ProductList from "../components/ProductList";
-
+import FootballProducts from "../components/FootballProducts";
 
 function Football() {
   return (
-    <div><ProductList/></div>
-  )
+    <div>
+      <FootballProducts />
+    </div>
+  );
 }
 
-export default Football
+export default Football;

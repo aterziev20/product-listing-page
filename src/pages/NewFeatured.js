@@ -1,11 +1,11 @@
 import React from "react";
 
-import ProductList from "../components/ProductList";
+import NewFeaturedProducts from "../components/NewFeaturedProducts";
 
 function NewFeatured() {
   return (
     <div>
-      <ProductList />
+      <NewFeaturedProducts />
     </div>
   );
 }
