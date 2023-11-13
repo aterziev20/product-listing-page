@@ -6,10 +6,7 @@ import "./styles/NavBar.css";
 
 // Redux
 import { useDispatch } from "react-redux";
-import {
-  setSearchTerm,
-  setSearchResults,
-} from "../redux/search/searchSlice";
+import { setSearchTerm, setSearchResults } from "../redux/search/searchSlice";
 
 import productsData from "../data/productsData";
 
@@ -76,13 +73,13 @@ function NavBar() {
       dispatch(setSearchResults(matchingValues));
       dispatch(setSearchTerm(searchTermInput));
 
-      
       // Redirect to a page displaying all matching values
       const encodedValues = matchingValues.map(encodeURIComponent).join(",");
       const path = `/shop/search-results?values=${encodedValues}&search=${encodeURIComponent(
         searchTermInput
       )}`;
       navigate(path);
+      window.scrollTo(0, 0);
     } else {
       // Handle the case when the search term is empty
       console.log("Search term is empty");
