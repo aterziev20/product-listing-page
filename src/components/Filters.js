@@ -1,5 +1,5 @@
 // Filters.js
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { FaChevronDown } from "react-icons/fa";
 import { setFilters, selectFilters } from "../redux/filters/filtersSlice";
@@ -15,7 +15,6 @@ const Filters = ({ products, onFilterChange }) => {
     const updatedRanges = filters.selectedPriceRanges.includes(priceRange)
       ? filters.selectedPriceRanges.filter((range) => range !== priceRange)
       : [...filters.selectedPriceRanges, priceRange];
-
     applyFilters(filters.selectedColors, updatedRanges);
   };
 
@@ -23,7 +22,6 @@ const Filters = ({ products, onFilterChange }) => {
     const updatedColors = filters.selectedColors.includes(color)
       ? filters.selectedColors.filter((col) => col !== color)
       : [...filters.selectedColors, color];
-
     applyFilters(updatedColors, filters.selectedPriceRanges);
   };
 
@@ -97,6 +95,13 @@ const Filters = ({ products, onFilterChange }) => {
   const availableColors = [
     ...new Set(products.map((product) => product.color)),
   ];
+
+  useEffect(() => {
+    return () => {
+      // Reset filters when component is unmounted
+      dispatch(setFilters({ selectedPriceRanges: [], selectedColors: [] }));
+    };
+  }, []);
 
   return (
     <div>
@@ -198,7 +203,7 @@ const Filters = ({ products, onFilterChange }) => {
                     <div className="color-options-grid">
                       {availableColors.map((color) => (
                         <div
-                          key={color}
+                          key={color + 1}
                           className={`color-option ${
                             filters.selectedColors.includes(color)
                               ? "selected"
@@ -207,7 +212,9 @@ const Filters = ({ products, onFilterChange }) => {
                           onClick={() => handleColorChange(color)}
                         >
                           <div
-                            className={`color-circle ${color.toLowerCase()} ${
+                            className={`color-circle ${
+                              color && color.toLowerCase()
+                            } ${
                               filters.selectedColors.includes(color)
                                 ? "checked"
                                 : ""

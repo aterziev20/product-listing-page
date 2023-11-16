@@ -9,13 +9,26 @@ const ProductItem = ({ product }) => {
   const [isRatingHovered, setIsRatingHovered] = useState(false);
   const [isAddedToCart, setIsAddedToCart] = useState(false);
   const [isAddedToFavourite, setIsAddedToFavourite] = useState(false);
+  const [starPercentage, setStarPercentage] = useState(0);
 
   useEffect(() => {
-    const starPercentage = (rating / 5) * 100;
-    const starPercentageRounded = `${Math.round(starPercentage / 10) * 10}%`;
-    const starsInner = document.querySelector(`.stars-inner-${id}`);
-    starsInner.style.width = starPercentageRounded;
-  }, [rating, id]);
+    /* Filled according to rating
+    const calculateStarPercentage = () => {
+      const clampedRating = Math.max(0, Math.min(rating, 5));
+      const percentage = (clampedRating / 5) * 100;
+      setStarPercentage(`${percentage}%`);
+    };
+    */
+
+    // Filled according to rating rounded to 0.5
+    const calculateStarPercentage = () => {
+      const clampedRating = Math.max(0, Math.min(rating, 5));
+      const percentage = (clampedRating / 5) * 100;
+      setStarPercentage(`${Math.round(percentage / 10) * 10}%`);
+    };
+
+    calculateStarPercentage();
+  }, [rating]);
 
   const handleRatingHover = () => {
     setIsRatingHovered(true);
@@ -26,24 +39,12 @@ const ProductItem = ({ product }) => {
   };
 
   const handleAddToFavourite = () => {
-    if (isAddedToFavourite) {
-      setIsAddedToFavourite(false);
-    } else {
-      setIsAddedToFavourite(true);
-    }
+    setIsAddedToFavourite((prev) => !prev);
   };
 
   const handleAddToCart = () => {
-    if (isAddedToCart) {
-      setIsAddedToCart(false);
-    } else {
-      setIsAddedToCart(true);
-    }
+    setIsAddedToCart((prev) => !prev);
   };
-
-  //Discount Percentage calculation
-  const discountValue = price - discountedPrice;
-  const discountPercentage = Math.round((discountValue / price) * 100);
 
   return (
     <div className="product-item">
@@ -65,11 +66,6 @@ const ProductItem = ({ product }) => {
               <span className="discounted-price">BGN {discountedPrice}</span>
               <span className="original-price">BGN {price}</span>
             </div>
-            <div className="discount-percentage">
-              <span >
-                {discountPercentage}% off
-              </span>
-            </div>
           </div>
         ) : (
           <div className="price-container">
@@ -84,7 +80,10 @@ const ProductItem = ({ product }) => {
         onMouseEnter={handleRatingHover}
         onMouseLeave={handleRatingLeave}
       >
-        <div className={`stars-inner stars-inner-${id}`}></div>
+        <div
+          className={`stars-inner stars-inner-${id}`}
+          style={{ width: starPercentage }}
+        ></div>
         {isRatingHovered && (
           <div className="rating-popup-container">
             <div className="rating-popup">{rating.toFixed(1)} out of 5</div>

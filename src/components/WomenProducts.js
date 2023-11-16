@@ -81,7 +81,7 @@ const WomenProducts = () => {
     <div className="product-list">
       <div className="fixed-container">
         <div className="counter-filter">
-          <h2>
+          <h2 className="category-name">
             Women's Items
             <br />({Math.min(filteredProducts.length, visibleProductsCount)} out
             of {womenProducts.length})
