@@ -7,6 +7,7 @@ import "./styles/NavBar.css";
 // Redux
 import { useDispatch } from "react-redux";
 import { setSearchTerm, setSearchResults } from "../redux/search/searchSlice";
+import { setFilters, selectFilters } from "../redux/filters/filtersSlice";
 
 import productsData from "../data/productsData";
 
@@ -43,6 +44,12 @@ function NavBar() {
   const navigate = useNavigate();
 
   const handleSearch = () => {
+    dispatch(
+      setFilters({
+        selectedColors: [],
+        selectedPriceRanges: [],
+      })
+    );
     if (searchTermInput.trim() !== "") {
       // Extract unique values for color, description, group, and sport from productsData
       const category = [
@@ -80,6 +87,7 @@ function NavBar() {
       )}`;
       navigate(path);
       window.scrollTo(0, 0);
+      setSearchTermInput("");
     } else {
       // Handle the case when the search term is empty
       console.log("Search term is empty");
@@ -124,13 +132,6 @@ function NavBar() {
             </div>
             <div className="nav-icon-container">
               <div className="search-input">
-                <input
-                  type="text"
-                  placeholder="Search..."
-                  value={searchTermInput}
-                  onChange={(e) => setSearchTermInput(e.target.value)}
-                  onKeyDown={handleEnter}
-                />
                 <button
                   className="search-icon"
                   onClick={handleSearch}
@@ -138,6 +139,13 @@ function NavBar() {
                 >
                   <IoSearchOutline />
                 </button>
+                <input
+                  type="text"
+                  placeholder="Search..."
+                  value={searchTermInput}
+                  onChange={(e) => setSearchTermInput(e.target.value)}
+                  onKeyDown={handleEnter}
+                />
               </div>
               <Link to={`/${`Favourites`.toLowerCase()}`} className="nav-icon">
                 <IoHeartOutline />

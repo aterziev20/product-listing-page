@@ -5,16 +5,21 @@
 }
 
 .dropdown {
-  border-bottom: 1px solid #111111;
+  width: 220px;
+  border-bottom: 1px solid #e5e5e5;
 }
 
 .dropdown-toggle {
+  cursor: pointer;
   display: flex;
   flex-direction: row;
   align-items: center;
   font-size: 1.1rem;
   justify-content: space-between;
   width: 220px;
+  font-weight: 600;
+  margin: 0;
+  padding: 20px 0;
 }
 
 .chevron-icon {
@@ -124,6 +129,7 @@
   margin-top: 3%;
   font-size: 0.8rem;
   font-weight: 100;
+  cursor: pointer;
 }
 
 .color-circle {
@@ -133,6 +139,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  cursor: pointer;
 }
 
 .color-circle:active {
@@ -298,7 +305,6 @@
     width: 150px;
   }
   .color-options-grid {
-
     width: 150px;
   }
 }
