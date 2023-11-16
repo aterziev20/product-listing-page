@@ -46,6 +46,9 @@ const ProductItem = ({ product }) => {
     setIsAddedToCart((prev) => !prev);
   };
 
+  const discountValue = price - discountedPrice;
+  const discountPercentage = Math.round((discountValue / price) * 100);
+
   return (
     <div className="product-item">
       <div className="image-container">
@@ -66,6 +69,9 @@ const ProductItem = ({ product }) => {
               <span className="discounted-price">BGN {discountedPrice}</span>
               <span className="original-price">BGN {price}</span>
             </div>
+            <span className="discount-percentage">
+              {discountPercentage}% off
+            </span>
           </div>
         ) : (
           <div className="price-container">
