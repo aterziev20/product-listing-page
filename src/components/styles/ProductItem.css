@@ -38,18 +38,18 @@
 
 .discounted-price {
   font-size: 1.1rem;
-  color: #111111; /* Discounted price color */
+  color: var(--secondaty-color); /* Discounted price color */
   margin-right: 3%;
 }
 
 .original-price {
   text-decoration: line-through;
   margin-right: 5px;
-  color: #7b7b7b;
+  color: var(--hover-color);
 }
 
 .discount-percentage{
-  color: #007d48;
+  color: var(--discounted-color);
   font-size: 1.1rem;
 }
 
@@ -104,6 +104,10 @@
 
 .add-to-cart-button:hover {
   transform: scale(1.1);
+}
+
+.add-to-cart-button:active {
+  transform: scale(0.9);
 }
 
 .image-container {

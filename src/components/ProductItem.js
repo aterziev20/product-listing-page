@@ -3,6 +3,14 @@ import { IoHeartOutline, IoHeart } from "react-icons/io5";
 
 import "./styles/ProductItem.css";
 
+//redux
+import { useDispatch } from "react-redux";
+import {
+  addToFavorites,
+  removeFromFavorites,
+} from "../redux/favorites/favoritesSlice";
+import { addToCart, removeFromCart } from "../redux/cart/cartSlice";
+
 const ProductItem = ({ product }) => {
   const { id, thumbnail, title, description, price, discountedPrice, rating } =
     product;
@@ -38,14 +46,25 @@ const ProductItem = ({ product }) => {
     setIsRatingHovered(false);
   };
 
-  const handleAddToFavourite = () => {
-    setIsAddedToFavourite((prev) => !prev);
-  };
+  //redux
+  const dispatch = useDispatch();
 
   const handleAddToCart = () => {
-    setIsAddedToCart((prev) => !prev);
+    dispatch(addToCart(product));
   };
 
+  const handleAddToFavourite = () => {
+
+    if (isAddedToFavourite) {
+      dispatch(removeFromFavorites(product));
+      setIsAddedToFavourite(false);
+    } else {
+      dispatch(addToFavorites(product));
+      setIsAddedToFavourite(true);
+    }
+  };
+
+  //Discount Percentage calculation
   const discountValue = price - discountedPrice;
   const discountPercentage = Math.round((discountValue / price) * 100);
 
@@ -69,9 +88,9 @@ const ProductItem = ({ product }) => {
               <span className="discounted-price">BGN {discountedPrice}</span>
               <span className="original-price">BGN {price}</span>
             </div>
-            <span className="discount-percentage">
-              {discountPercentage}% off
-            </span>
+            <div className="discount-percentage">
+              <span>{discountPercentage}% off</span>
+            </div>
           </div>
         ) : (
           <div className="price-container">
