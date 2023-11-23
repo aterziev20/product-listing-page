@@ -12,7 +12,7 @@ import Basketball from "./pages/Basketball";
 import Tennis from "./pages/Tennis";
 import Running from "./pages/Running";
 
-import ProductList from "./components/ProductList";
+import SearchList from "./components/SearchList";
 
 import Favourites from "./pages/Favourites";
 import Cart from "./pages/Cart";
@@ -66,7 +66,7 @@ const App = () => {
               element={<Running />}
             />
 
-            <Route path="/shop/search-results" element={<ProductList />} />
+            <Route path="/shop/search-results" element={<SearchList />} />
           </Routes>
           <Footer />
         </div>

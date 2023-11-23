@@ -16,7 +16,7 @@ import {
 } from "../redux/search/searchSlice";
 import { selectFilters, setFilters } from "../redux/filters/filtersSlice";
 
-const ProductList = () => {
+const SearchList = () => {
   const location = useLocation();
   const dispatch = useDispatch();
   const searchTerm = useSelector(selectSearchTerm);
@@ -167,4 +167,4 @@ const ProductList = () => {
   );
 };
 
-export default ProductList;
+export default SearchList;

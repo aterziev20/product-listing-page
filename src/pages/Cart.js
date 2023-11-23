@@ -1,13 +1,13 @@
 import React from "react";
 
 import ScrollToTop from "../components/ScrollToTop";
-import WorkInProgress from "../components/WorkInProgress";
+import CartList from "../components/CartList";
 
 function Cart() {
   return (
     <div>
       <ScrollToTop />
-      <WorkInProgress />
+      <CartList />
     </div>
   );
 }

@@ -3,6 +3,14 @@ import { IoHeartOutline, IoHeart } from "react-icons/io5";
 
 import "./styles/ProductItem.css";
 
+//redux
+import { useDispatch } from "react-redux";
+import {
+  addToFavorites,
+  removeFromFavorites,
+} from "../redux/favorites/favoritesSlice";
+import { addToCart, removeFromCart } from "../redux/cart/cartSlice";
+
 const ProductItem = ({ product }) => {
   const { id, thumbnail, title, description, price, discountedPrice, rating } =
     product;
@@ -25,19 +33,20 @@ const ProductItem = ({ product }) => {
     setIsRatingHovered(false);
   };
 
-  const handleAddToFavourite = () => {
-    if (isAddedToFavourite) {
-      setIsAddedToFavourite(false);
-    } else {
-      setIsAddedToFavourite(true);
-    }
-  };
+  //redux
+  const dispatch = useDispatch();
 
   const handleAddToCart = () => {
-    if (isAddedToCart) {
-      setIsAddedToCart(false);
+    dispatch(addToCart(product));
+  };
+
+  const handleAddToFavourite = () => {
+    if (isAddedToFavourite) {
+      dispatch(removeFromFavorites(product));
+      setIsAddedToFavourite(false);
     } else {
-      setIsAddedToCart(true);
+      dispatch(addToFavorites(product));
+      setIsAddedToFavourite(true);
     }
   };
 
@@ -66,9 +75,7 @@ const ProductItem = ({ product }) => {
               <span className="original-price">BGN {price}</span>
             </div>
             <div className="discount-percentage">
-              <span >
-                {discountPercentage}% off
-              </span>
+              <span>{discountPercentage}% off</span>
             </div>
           </div>
         ) : (
