@@ -150,7 +150,6 @@ const SearchList = () => {
           <Sorting />
         </div>
       </div>
-
       <div className="product-list-container">
         {visibleProducts.map((product) => (
           <ProductItem key={product.id} product={product} />

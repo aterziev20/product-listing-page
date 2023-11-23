@@ -28,7 +28,7 @@
 }
 
 .price-container {
-  height: 40px;
+  height: 30px;
 }
 
 
@@ -51,8 +51,6 @@
 .discount-percentage{
   color: var(--discounted-color);
   font-size: 1.1rem;
-  margin-top: 2%;
-
 }
 
 .stars-outer {

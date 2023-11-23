@@ -74,7 +74,7 @@ const Sorting = () => {
 
   return (
     <div className="sorting">
-      <div className="dropdown">
+      <div className="sort-dropdown">
         <div className="selected-option" onClick={toggleDropdown}>
           <span className="sortTitle">Sort By: <span className="sortLable">{selectedLabel}</span></span>
           <span className={`chevron-icon ${isOpen ? "rotate180" : ""}`}>

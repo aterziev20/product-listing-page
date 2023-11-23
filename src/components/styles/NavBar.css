@@ -75,7 +75,7 @@
   position: relative;
   width: 200px;
   padding-right: 10%;
-  margin-right: 5%;
+  margin-right: 12%;
 }
 
 .search-input input {
@@ -83,7 +83,7 @@
   border: 1px transparent;
   border-radius: 20px;
   font-size: 1rem;
-  padding: 10px 0 8px 40px;
+  padding: 10px 20px 8px 40px;
   margin: 0% 0 0 0;
   width: 100%;
   border: none;
@@ -121,7 +121,6 @@
   padding: 5px 7px 1px 7px;
   margin-bottom: 2px;
   transition: background-color 0.2s ease-in-out;
-
 }
 
 .nav-icon:hover {

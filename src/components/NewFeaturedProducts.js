@@ -81,7 +81,7 @@ const NewFeaturedProducts = () => {
     <div className="product-list">
       <div className="fixed-container">
         <div className="counter-filter">
-          <h2>
+          <h2 className="category-name">
             New & Featured Items
             <br />({Math.min(filteredProducts.length, visibleProductsCount)} out
             of {newFeaturedProducts.length})
@@ -99,6 +99,22 @@ const NewFeaturedProducts = () => {
           <Sorting />
         </div>
       </div>
+      {/*<div className="product-list-container">
+        {visibleProducts.length === 0 ? (
+          <>
+            <p>We could not find anything.</p>
+            <p>These popular items might interest you:</p>
+            {/ Display 5 popular items here *}
+            {newFeaturedProducts.slice(0, 5).map((product) => (
+              <ProductItem key={product.id} product={product} />
+            ))}
+          </>
+        ) : (
+          visibleProducts.map((product) => (
+            <ProductItem key={product.id} product={product} />
+          ))
+        )}
+          </div>*/}
       <div className="product-list-container">
         {visibleProducts.map((product) => (
           <ProductItem key={product.id} product={product} />

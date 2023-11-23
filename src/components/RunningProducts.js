@@ -81,7 +81,7 @@ const RunningProducts = () => {
     <div className="product-list">
       <div className="fixed-container">
         <div className="counter-filter">
-          <h2>
+        <h2 className="category-name">
             Running Items
             <br />({Math.min(filteredProducts.length, visibleProductsCount)} out
             of {runningProducts.length})
