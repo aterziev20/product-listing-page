@@ -1,6 +1,6 @@
 .cart-wrapper {
   display: flex;
-  margin-left: 20%;
+  margin-left: 15%;
   font-weight: 600;
 }
 
@@ -24,7 +24,7 @@
 }
 
 .cart-item-container td {
-  border-bottom: 1px solid #ccc;
+  border-bottom: 1px solid var(--icon-hover-color);
   padding: 25px;
 }
 
@@ -84,49 +84,58 @@
 }
 
 .cart-summary {
-  background-color: #f8f8f8;
-  padding: 10px;
+  width: 15%;
+  height: 50%;
+  padding: 00px 20px;
   margin: 5% 10% 0 10%;
   border-radius: 8px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  border: 1px solid var(--icon-hover-color);
 }
 
 .cart-summary h3 {
-  font-size: 1.5rem;
+  font-size: 1.3rem;
+  margin: 5% 0px 10% 0;
 }
 
-.total-without-discount,
-.total-savings,
-.final-price {
-  margin: 10% 0;
-  font-size: 1rem;
-}
-
-.total-without-discount,
-.total-savings,
-.final-price {
-  margin: 10% 0;
-  font-size: 1rem;
+.order-summary-item {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 10px;
 }
 
 .prices-right {
-  text-align: right;
+  font-weight: bold;
 }
 
-.final-price {
+.discount-total {
+  font-weight: bold;
+  color: var(--discounted-color);
+}
+
+.order-total-title {
+  display: flex;
+  justify-content: space-between;
+  margin: 50px 0 10px 0;
   font-size: 1.3rem;
-  display: block;
-  border-top: 1px solid var(--hover-color);
+  font-weight: bold;
+  border-top: 1px solid var(--icon-hover-color);
+  padding: 10px 0;
 }
 
-.total-without-discount span {
-  color: var(--secondary-color);
+.order-total {
+  color: #b12704;
+  font-size: 1.3rem;
 }
 
-.total-savings span {
-  color: red; /* Red color for discount */
+.chekout-button {
+  background-color: #f7ca00;
+  text-align: center;
+  border-radius: 5px;
+  padding: 5%;
+  cursor: pointer;
+  font-weight: 600;
 }
-
-.final-price span {
-  color: var(--secondary-color);
+.terms-conditions {
+  text-align: center;
+  text-decoration: none;
 }

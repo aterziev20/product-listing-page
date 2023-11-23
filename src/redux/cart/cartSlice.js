@@ -28,12 +28,8 @@ const cartSlice = createSlice({
       );
       state.splice(existingProductIndex, 1);
     },
-    clearCart: (state) => {
-      state.length = 0;
-    },
   },
 });
 
-export const { addToCart, removeFromCart, deleteFromCart, clearCart } =
-  cartSlice.actions;
+export const { addToCart, removeFromCart, deleteFromCart } = cartSlice.actions;
 export default cartSlice.reducer;

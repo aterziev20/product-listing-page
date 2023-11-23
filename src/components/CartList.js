@@ -1,15 +1,17 @@
 // Cart.js
 import React from "react";
+import { Link } from "react-router-dom";
+
+//redux
 import { useDispatch, useSelector } from "react-redux";
 import {
   addToCart,
   removeFromCart,
   deleteFromCart,
-  clearCart,
 } from "../redux/cart/cartSlice";
 import { addToFavorites } from "../redux/favorites/favoritesSlice";
-// Adjust the path according to your actual folder structure
 
+//styles
 import "./styles/CartList.css";
 import {
   IoAddCircle,
@@ -21,10 +23,6 @@ import {
 const CartList = () => {
   const dispatch = useDispatch();
   const cartItems = useSelector((state) => state.cart);
-
-  const handleClearCart = () => {
-    dispatch(clearCart());
-  };
 
   const handleRemoveFromCart = (productId, quantity) => {
     if (quantity > 1) {
@@ -210,29 +208,37 @@ const CartList = () => {
             </tbody>
           </table>
         )}
-        <button onClick={handleClearCart}>Empty Cart</button>
       </div>
       {cartItems.length > 0 && (
         <div className="cart-summary">
-          <h3>Oder Summary</h3>
-          <div className="total-without-discount">
-            <span>Products Price: </span>
+          <h3>Order Summary</h3>
+          <div className="order-summary-item">
+            <span>
+              Products{" "}
+              <span className="cart-product-counter">({totalItems})</span>:
+            </span>
             <span className="prices-right">BGN {totalPrice.toFixed(2)}</span>
           </div>
-          <div className="total-savings">
-            <span>
-              Discount:{" "}
-              <span className="prices-right">
-                BGN {totalSavings.toFixed(2)}
-              </span>
+          <div className="order-summary-item">
+            <span>Discount:</span>
+            <span className="discount-total">
+              BGN {totalSavings.toFixed(2)}
             </span>
           </div>
-          <div className="final-price">
-            <span>
-              Order total:{" "}
-              <span className="prices-right">BGN {finalPrice.toFixed(2)}</span>
-            </span>
+          <div className="order-total-title">
+            <span>Order total:</span>
+            <span className="order-total">BGN {finalPrice.toFixed(2)}</span>
           </div>
+          <div className="chekout-button">Proceed to Checkout</div>
+          <p className="terms-conditions">
+            By placing your order, you agree to LuamSport's{" "}
+            <Link to={""}>privacy notice</Link> and{" "}
+            <Link to={""}>conditions of use</Link>.
+          </p>
+          <p className="terms-conditions">
+            You also agree to LuamSport's{" "}
+            <Link to={""}>terms and conditions</Link>.
+          </p>
         </div>
       )}
     </div>
