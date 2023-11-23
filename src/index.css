@@ -2,6 +2,7 @@
   --primary-color: #ffffff;
   --secondary-color: #111111;
   --third-color: #f5f5f5;
+  --discounted-color: #007d48;
   --accent-color: #ff4500;
   --icon-hover-color: #e5e5e5;
   --hover-color: #7e7e7e;
@@ -50,5 +51,5 @@ code {
 .swiper-button-prev:hover {
   box-shadow: 0px 9px 16px 4px rgba(0, 0, 0, 0.2),
     0px 4px 4px 2px rgba(0, 0, 0, 0.2);
-    color: var(--accent-color);
+  color: var(--accent-color);
 }

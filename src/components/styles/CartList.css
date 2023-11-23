@@ -1,4 +1,132 @@
-.cart-original-price {
-    text-decoration: line-through;
+.cart-wrapper {
+  display: flex;
+  margin-left: 20%;
+  font-weight: 600;
+}
 
+.cart-tile {
+  font-size: 2rem;
+  font-weight: 600;
+}
+
+.cart-product-counter {
+  color: var(--hover-color);
+}
+
+.cart-table {
+  width: 70%;
+  text-align: center;
+}
+
+.cart-table-headers {
+  font-weight: 600;
+  color: var(--secondary-color);
+}
+
+.cart-item-container td {
+  border-bottom: 1px solid #ccc;
+  padding: 25px;
+}
+
+.cart-item-image {
+  width: 100px;
+  height: 100px;
+}
+
+.cart-item-title {
+  color: var(--secondary-color);
+  width: 35%;
+  text-align: left;
+  padding-left: 2%;
+}
+
+.cart-item-title h3 {
+  font-weight: 600;
+}
+
+.cart-item-price {
+  width: 100%;
+  min-width: 200px;
+}
+
+.cart-discount-percentage {
+  color: var(--discounted-color);
+}
+
+.cart-original-price {
+  text-decoration: line-through;
+  color: var(--hover-color);
+}
+
+.quantity-button-container {
+  display: flex;
+}
+
+.quantity-button {
+  font-size: 1.3rem;
+  cursor: pointer;
+  margin: 0 8%;
+}
+
+.quantity-button.disabled {
+  cursor: not-allowed;
+  opacity: 0.5;
+}
+
+.cart-actions-container {
+  display: flex;
+}
+
+.cart-actions {
+  font-size: 1.3rem;
+  margin: 0 20%;
+  cursor: pointer;
+}
+
+.cart-summary {
+  background-color: #f8f8f8;
+  padding: 10px;
+  margin: 5% 10% 0 10%;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.cart-summary h3 {
+  font-size: 1.5rem;
+}
+
+.total-without-discount,
+.total-savings,
+.final-price {
+  margin: 10% 0;
+  font-size: 1rem;
+}
+
+.total-without-discount,
+.total-savings,
+.final-price {
+  margin: 10% 0;
+  font-size: 1rem;
+}
+
+.prices-right {
+  text-align: right;
+}
+
+.final-price {
+  font-size: 1.3rem;
+  display: block;
+  border-top: 1px solid var(--hover-color);
+}
+
+.total-without-discount span {
+  color: var(--secondary-color);
+}
+
+.total-savings span {
+  color: red; /* Red color for discount */
+}
+
+.final-price span {
+  color: var(--secondary-color);
 }

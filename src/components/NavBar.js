@@ -5,7 +5,7 @@ import { ReactComponent as Logo } from "../assets/icons/logo-black.svg";
 import "./styles/NavBar.css";
 
 // Redux
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { setSearchTerm, setSearchResults } from "../redux/search/searchSlice";
 
 import productsData from "../data/productsData";
@@ -92,6 +92,9 @@ function NavBar() {
     }
   };
 
+  const cartItems = useSelector((state) => state.cart);
+  const totalItems = cartItems.reduce((total, item) => total + item.quantity, 0);
+
   return (
     <div>
       <nav className={navClassName}>
@@ -144,6 +147,7 @@ function NavBar() {
               </Link>
               <Link to={`/${`Cart`.toLowerCase()}`} className="nav-icon">
                 <IoBagOutline />
+                {totalItems > 0 && <span className="cart-counter">{totalItems}</span>}
               </Link>
             </div>
           </div>
